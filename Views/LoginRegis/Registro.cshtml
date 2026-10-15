@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Registro de usuario</h1>
+
+    <form action='@Url.Action("Registro", "LoginRegis")' method="POST">
+        <input type="text" name="nombreUsuario" placeholder="Ingrese su nombre de usuario" />
+        <input type="password" name="contrasena" placeholder="Ingrese su contraseña" />
+        <input type="text" name="apellido" placeholder="Ingrese su apellido" />
+        <input type="email" name="email" placeholder="Ingrese su correo electrónico" />
+
+        <div>
+            <label><input type="checkbox" name="restricciones" value="Celiaquía" /> Celiaquía</label>
+            <label><input type="checkbox" name="restricciones" value="Diabetes" /> Diabetes</label>
+            <label><input type="checkbox" name="restricciones" value="Kosher" /> Kosher</label>
+            <label><input type="checkbox" name="restricciones" value="Halal" /> Halal</label>
+            <label><input type="checkbox" name="restricciones" value="Lactosa" /> Lactosa</label>
+            <label><input type="checkbox" name="restricciones" value="Vegano" /> Vegano</label>
+            <label><input type="checkbox" name="restricciones" value="Vegetariano" /> Vegetariano</label>
+            <label><input type="checkbox" name="restricciones" value="Alergias" /> Alergias</label>
+        </div>
+
+        <input type="submit" value="Registrarse" />
+    </form>
+</div>

@@ -4,10 +4,21 @@
 
 <div class="text-center">
     <h1 class="display-4">V.E.M.O.S.</h1>
-    <form action='@Url.Action("Index", "LoginRegisController")' method="POST">
-        <input type= "text" name = nombreUsuario placeholder="Ingrese su nombre de usuario" />
-        <input type= "password" name = contraseña placeholder="Ingrese su contraseña" />
-        <input type="submit" value="Ingresar"/>
-    </form>
+    @if (!string.IsNullOrWhiteSpace(ViewBag.Usuario as string))
+    {
+        <p>Sesión iniciada como @ViewBag.NombreCompleto (@ViewBag.Usuario)</p>
+        <form action='@Url.Action("Logout", "LoginRegis")' method="POST">
+            <input type="submit" value="Cerrar sesión" />
+        </form>
+    }
+    else
+    {
+        <form action='@Url.Action("Login", "LoginRegis")' method="POST">
+            <input type="text" name="nombreUsuario" placeholder="Ingrese su nombre de usuario" />
+            <input type="password" name="contrasena" placeholder="Ingrese su contraseña" />
+            <input type="submit" value="Ingresar" />
+            <a href="@Url.Action("Registro", "LoginRegis")">Registrarse</a>
+        </form>
+    }
     <p>@ViewBag.Mensaje</p>
 </div>

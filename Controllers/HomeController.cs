@@ -15,6 +15,8 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.Usuario = HttpContext.Session.GetString("Usuario");
+        ViewBag.NombreCompleto = HttpContext.Session.GetString("NombreCompleto");
         return View();
     }
 

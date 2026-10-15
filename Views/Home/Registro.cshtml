@@ -1,0 +1,15 @@
+<form action='@Url.Action("Registro", "LoginRegis")' method="POST">
+    <input type= "text" name = nombreUsuario placeholder="Ingrese su nombre de usuario" />
+    <input type= "password" name = contrasena placeholder="Ingrese su contraseña" />
+    <input type= "text" name = apellido placeholder="Ingrese su apellido" />
+    <input type= "email" name = email placeholder="Ingrese su correo electrónico" />
+    <input type= checkbox name = restricciones /> Celiaquía
+    <input type= checkbox name = restricciones /> Diabetes
+    <input type= checkbox name = restricciones /> Kosher
+    <input type= checkbox name = restricciones /> Halal
+    <input type= checkbox name = restricciones /> Lactosa
+    <input type= checkbox name = restricciones /> Vegano
+    <input type= checkbox name = restricciones /> Vegetariano
+    <input type= checkbox name = restricciones /> Alergias
+    <input type="submit" value="Registrarse"/>
+</form>
