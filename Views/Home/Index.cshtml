@@ -3,6 +3,11 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">V.E.M.O.S.</h1>
+    <form action='@Url.Action("Index", "Home")' method="POST">
+        <input type= "text" name = nombreUsuario placeholder="Ingrese su nombre de usuario" />
+        <input type= "password" name = contraseña placeholder="Ingrese su contraseña" />
+        <input type="submit" value="Ingresar"/>
+    </form>
+    <p>@ViewBag.Mensaje</p>
 </div>
