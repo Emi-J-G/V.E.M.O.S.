@@ -4,7 +4,7 @@ using Dapper;
 using VEMOS.Models;
 public class DB
 {
-    string _connectionString = @"Server=localhost;DataBase=NOMBRE_DE_LA_BASE_DE_DATOS;Integrated Security=True;TrustServerCertificate=True;";
+    string _connectionString = @"Server=localhost;DataBase=VEMOSDB;Integrated Security=True;TrustServerCertificate=True;";
     
     //agarra un objeto usuario y lo inserta en la base de datos, incluyendo sus restricciones.
     public void registrarUsuario(Usuario usuario) {

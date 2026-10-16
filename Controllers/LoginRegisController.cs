@@ -21,7 +21,7 @@ public class LoginRegisController : Controller
 
     //registra al user en la base de datos y lo loguea
     [HttpPost]
-    public IActionResult Registrar(string nombreUsuario, string contrasena, string apellido, string email, string[] restricciones)
+    public IActionResult Registrar(string nombreUsuario, string nombre, string apellido, string contrasena, string email, string[] restricciones)
     {
         Usuario usuario = new Usuario()
         {
