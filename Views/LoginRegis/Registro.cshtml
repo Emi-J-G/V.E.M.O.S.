@@ -5,7 +5,7 @@
 <div class="text-center">
     <h1 class="display-4">Registro de usuario</h1>
 
-    <form action='@Url.Action("Registro", "LoginRegis")' method="POST">
+    <form action='@Url.Action("Registrar", "LoginRegis")' method="POST">
         <input type="text" name="nombreUsuario" placeholder="Ingrese su nombre de usuario" />
         <input type="password" name="contrasena" placeholder="Ingrese su contraseña" />
         <input type="text" name="apellido" placeholder="Ingrese su apellido" />
@@ -20,8 +20,10 @@
             <label><input type="checkbox" name="restricciones" value="Vegano" /> Vegano</label>
             <label><input type="checkbox" name="restricciones" value="Vegetariano" /> Vegetariano</label>
             <label><input type="checkbox" name="restricciones" value="Alergias" /> Alergias</label>
+            <label><input type="checkbox" name="restricciones" value="Fodmap" /> Fodmap</label>
+            <label><input type="checkbox" name="restricciones" value="Ninguna" /> Ninguna</label>
         </div>
-
         <input type="submit" value="Registrarse" />
     </form>
+    <a href="@Url.Action("Login", "LoginRegis")">Iniciar sesión</a>
 </div>

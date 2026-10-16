@@ -13,9 +13,15 @@ public class LoginRegisController : Controller
         _logger = logger;
     }
 
+    //desde index manda a view de registro
+    public IActionResult Registro()
+    {
+        return View();
+    }
 
+    //registra al user en la base de datos y lo loguea
     [HttpPost]
-    public IActionResult Registro(string nombreUsuario, string contrasena, string apellido, string email, string[] restricciones)
+    public IActionResult Registrar(string nombreUsuario, string contrasena, string apellido, string email, string[] restricciones)
     {
         Usuario usuario = new Usuario()
         {
@@ -28,13 +34,20 @@ public class LoginRegisController : Controller
         };
         DB db = new DB();
         db.registrarUsuario(usuario);
+        //sessions
         HttpContext.Session.SetString("Usuario", usuario.username);
         HttpContext.Session.SetString("NombreCompleto", usuario.nombre);
+        return RedirectToAction("Home", "Home");
+    }
+
+    public IActionResult Login()
+    {
         return View();
     }
 
+    //logea un user
     [HttpPost]
-    public IActionResult Login(string nombreUsuario, string contrasena) {
+    public IActionResult Logear(string nombreUsuario, string contrasena) {
         DB db = new DB();
         //se fija si usuario existe
         Usuario usuario = db.usuarioExiste(nombreUsuario);
@@ -54,8 +67,7 @@ public class LoginRegisController : Controller
             //usuario no encontrado
             ViewBag.Mensaje = "Usuario o contraseña incorrectos.";
         }
-
-        return View("~/Views/Home/Index.cshtml");
+        return RedirectToAction("Home", "Home");
     }
 
     [HttpPost]
