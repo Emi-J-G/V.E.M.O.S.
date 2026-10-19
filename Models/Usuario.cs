@@ -7,6 +7,7 @@ public class Usuario
     public string nombre { get; set; }
     public string apellido { get; set; }
     public string email { get; set; }
+    public string tipo { get; set; }
     public string contrasena { get; set; }
     public List<Restriccion> restricciones { get; set; }
 }

@@ -11,7 +11,10 @@
         <input type="text" name="apellido" placeholder="Ingrese su apellido" />
         <input type="password" name="contrasena" placeholder="Ingrese su contraseña" />
         <input type="email" name="email" placeholder="Ingrese su correo electrónico" />
-
+        <select name="tipo">
+            <option value="Cliente">Cliente</option>
+            <option value="Restaurante">Restaurante</option>
+        </select>
         <div>
             <label><input type="checkbox" name="restricciones" value="Celiaquía" /> Celiaquía</label>
             <label><input type="checkbox" name="restricciones" value="Diabetes" /> Diabetes</label>
@@ -21,8 +24,6 @@
             <label><input type="checkbox" name="restricciones" value="Vegano" /> Vegano</label>
             <label><input type="checkbox" name="restricciones" value="Vegetariano" /> Vegetariano</label>
             <label><input type="checkbox" name="restricciones" value="Alergias" /> Alergias</label>
-            <label><input type="checkbox" name="restricciones" value="Fodmap" /> Fodmap</label>
-            <label><input type="checkbox" name="restricciones" value="Ninguna" /> Ninguna</label>
         </div>
         <input type="submit" value="Registrarse" />
     </form>

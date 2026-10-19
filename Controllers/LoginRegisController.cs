@@ -20,8 +20,8 @@ public class LoginRegisController : Controller
     }
 
     //registra al user en la base de datos y lo loguea
-    [HttpPost]
-    public IActionResult Registrar(string nombreUsuario, string nombre, string apellido, string contrasena, string email, string[] restricciones)
+    [HttpPost("/LoginRegis/Registrar")]
+    public IActionResult Registrar(string nombreUsuario, string nombre, string apellido, string contrasena, string email, string[] restricciones, string tipo)
     {
         Usuario usuario = new Usuario()
         {
@@ -30,6 +30,7 @@ public class LoginRegisController : Controller
             apellido = apellido,
             email = email,
             contrasena = contrasena,
+            tipo = tipo,
             restricciones = restricciones.Select(r => new Restriccion { nombre = r }).ToList()
         };
         DB db = new DB();

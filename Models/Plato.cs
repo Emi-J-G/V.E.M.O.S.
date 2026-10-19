@@ -6,4 +6,5 @@ public class Plato
     public string nombre { get; set; }
     public string descripcion { get; set; }
     public decimal precio { get; set; }
+    public string tipo { get; set; }
 }

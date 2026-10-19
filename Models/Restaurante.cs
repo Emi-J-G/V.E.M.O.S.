@@ -7,5 +7,7 @@ public class Restaurante
     public string direccion { get; set; }
     public string descripcion { get; set; }
     public string telefono { get; set; }
+    public string tipo { get; set; }
     public List<Plato> platos { get; set; }
+    public int idUsuario { get; set; }
 }
