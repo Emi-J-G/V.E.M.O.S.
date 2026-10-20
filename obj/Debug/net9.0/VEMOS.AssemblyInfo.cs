@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VEMOS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c2a7bcf546d586d701206cb9dac3ac569a3389c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a802f0ea95bfb8af6fe9f93389803eb9c715042")]
 [assembly: System.Reflection.AssemblyProductAttribute("VEMOS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VEMOS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
