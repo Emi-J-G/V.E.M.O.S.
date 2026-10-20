@@ -3,15 +3,19 @@
 }
 
 <div class="text-center">
+    @if (!string.IsNullOrEmpty(ViewBag.Mensaje as string))
+    {
+        <p>@ViewBag.Mensaje</p>
+    }
     <h1 class="display-4">Registro de usuario</h1>
 
-    <form action='@Url.Action("Registrar", "LoginRegis")' method="POST">
-        <input type="text" name="nombreUsuario" placeholder="Ingrese su nombre de usuario" />
-        <input type="text" name="nombre" placeholder="Ingrese su nombre" />
-        <input type="text" name="apellido" placeholder="Ingrese su apellido" />
-        <input type="password" name="contrasena" placeholder="Ingrese su contraseña" />
-        <input type="email" name="email" placeholder="Ingrese su correo electrónico" />
-        <select name="tipo">
+    <form action='@Url.Action("Registrar", "LoginRegis")' method="POST" onsubmit="return validateRegisterForm();">
+        <input type="text" id="nombreUsuario" name="nombreUsuario" placeholder="Ingrese su nombre de usuario" required />
+        <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required />
+        <input type="text" id="apellido" name="apellido" placeholder="Ingrese su apellido" required />
+        <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" required />
+        <input type="email" id="email" name="email" placeholder="Ingrese su correo electrónico" required />
+        <select id="tipo" name="tipo">
             <option value="Cliente">Cliente</option>
             <option value="Restaurante">Restaurante</option>
         </select>

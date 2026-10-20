@@ -14,11 +14,11 @@ public class LoginRegisController : Controller
     }
 
     //desde index manda a view de registro
-    public IActionResult Registro()
+    public IActionResult Registro(string mensaje)
     {
+        ViewBag.Mensaje = mensaje;
         return View();
     }
-
     //registra al user en la base de datos y lo loguea
     [HttpPost("/LoginRegis/Registrar")]
     public IActionResult Registrar(string nombreUsuario, string nombre, string apellido, string contrasena, string email, string[] restricciones, string tipo)
@@ -39,8 +39,21 @@ public class LoginRegisController : Controller
             restricciones = restriccionesUsuario
         };
         DB db = new DB();
-        db.registrarUsuario(usuario);
-        //sessions
+        if (db.nomUsuarioExiste(nombreUsuario) != null) // en esta instancia, se valida que el nombre de usuario no esté siendo usado
+        {
+            ViewBag.Mensaje = "El nombre de usuario ya está en uso.";
+            return RedirectToAction("Registro", "LoginRegis", new { mensaje = ViewBag.Mensaje });
+        }
+        else if (db.emUsuarioExiste(email) != null) // en esta otra instancia, se valida que el correo electrónico no esté en uso
+        {
+            ViewBag.Mensaje = "El correo electrónico ya está en uso.";
+            return RedirectToAction("Registro", "LoginRegis", new { mensaje = ViewBag.Mensaje });
+        }
+        else // al pasar ambas instancias, se registra el usuario en la base de datos y se loguea automáticamente
+        {
+            db.registrarUsuario(usuario);
+        }
+        // se establece la presencia del usuario en la web mediante sessions
         HttpContext.Session.SetString("Usuario", usuario.username);
         HttpContext.Session.SetString("NombreCompleto", usuario.nombre);
         return RedirectToAction("Home", "Home");
@@ -52,11 +65,11 @@ public class LoginRegisController : Controller
     }
 
     //logea un user
-    [HttpPost]
-    public IActionResult Logear(string nombreUsuario, string contrasena) {
+    [HttpPost("/LoginRegis/Loguear")]
+    public IActionResult Loguear(string nombreUsuario, string contrasena) {
         DB db = new DB();
         //se fija si usuario existe
-        Usuario usuario = db.usuarioExiste(nombreUsuario);
+        Usuario usuario = db.nomUsuarioExiste(nombreUsuario);
         if (usuario != null)
         {
             usuario = db.validarUsuario(usuario.email, contrasena);
@@ -65,7 +78,7 @@ public class LoginRegisController : Controller
         if (usuario != null) {
             //usuario logueado correctamente
             HttpContext.Session.SetString("Usuario", nombreUsuario);
-            HttpContext.Session.SetString("NombreCompleto", nombreUsuario);
+            HttpContext.Session.SetString("NombreCompleto", usuario.nombre);
             ViewBag.Mensaje = "Bienvenido, " + usuario.nombre + "!";
             return RedirectToAction("Index", "Home");
         }

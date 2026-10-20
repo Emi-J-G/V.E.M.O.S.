@@ -3,11 +3,15 @@
 }
 <h1>@ViewData["Title"]</h1>
 
-    <div>
-        <form action='@Url.Action("Logear", "LoginRegis")' method="POST">
-            <input type="text" name="nombreUsuario" placeholder="Ingrese su nombre de usuario" />
-            <input type="password" name="contrasena" placeholder="Ingrese su contraseña" />
-            <input type="submit" value="Ingresar" />
-            <a href="@Url.Action("Registro", "LoginRegis")">Registrarse</a>
-        </form>
-    </div>
+<div>
+    @if (!string.IsNullOrEmpty(ViewBag.Mensaje as string))
+    {
+        <p>@ViewBag.Mensaje</p>
+    }
+    <form action='@Url.Action("Loguear", "LoginRegis")' method="POST">
+        <input type="text" name="nombreUsuario" placeholder="Ingrese su nombre de usuario" required />
+        <input type="password" name="contrasena" placeholder="Ingrese su contraseña" required />
+        <input type="submit" value="Ingresar" />
+        <a href="@Url.Action("Registro", "LoginRegis")">Registrarse</a>
+    </form>
+</div>

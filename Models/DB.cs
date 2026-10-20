@@ -54,10 +54,17 @@ public class DB
     }
 
     //trae un usuario si su user existe
-    public Usuario usuarioExiste(string username){
+    public Usuario nomUsuarioExiste(string username) {
         using (SqlConnection connection = new SqlConnection(_connectionString)) {
             string query = "SELECT * FROM Usuarios WHERE username = @pusername";
-            Usuario usuario = connection.QueryFirstOrDefault<Usuario>(query, new { pusername = username });
+            Usuario usuario = connection.QueryFirstOrDefault<Usuario>(query, new { pusername = username});
+            return usuario;
+        }
+    }
+    public Usuario emUsuarioExiste(string email) {
+        using (SqlConnection connection = new SqlConnection(_connectionString)) {
+            string query = "SELECT * FROM Usuarios WHERE email = @pemail";
+            Usuario usuario = connection.QueryFirstOrDefault<Usuario>(query, new { pemail = email});
             return usuario;
         }
     }
