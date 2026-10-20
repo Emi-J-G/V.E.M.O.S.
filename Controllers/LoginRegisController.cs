@@ -23,15 +23,20 @@ public class LoginRegisController : Controller
     [HttpPost("/LoginRegis/Registrar")]
     public IActionResult Registrar(string nombreUsuario, string nombre, string apellido, string contrasena, string email, string[] restricciones, string tipo)
     {
+        var restriccionesUsuario = (restricciones ?? Array.Empty<string>())
+            .Where(r => !string.IsNullOrWhiteSpace(r))
+            .Select(r => new Restriccion { nombre = r })
+            .ToList();
+
         Usuario usuario = new Usuario()
         {
             username = nombreUsuario,
-            nombre = nombreUsuario,
+            nombre = nombre,
             apellido = apellido,
             email = email,
             contrasena = contrasena,
             tipo = tipo,
-            restricciones = restricciones.Select(r => new Restriccion { nombre = r }).ToList()
+            restricciones = restriccionesUsuario
         };
         DB db = new DB();
         db.registrarUsuario(usuario);

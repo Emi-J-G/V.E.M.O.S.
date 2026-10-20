@@ -17,10 +17,16 @@ public class DB
             usuario.id = nuevoId;
 
             //inserta restricciones
-            if (usuario.restricciones != null) {
-                foreach (var restriccion in usuario.restricciones) { 
-                    string rquery = "INSERT INTO RestriccionesUsuario (idUsuario, nombre) VALUES (@idUsuario, @nombre)";
-                    connection.Execute(rquery, new { idUsuario = usuario.id, nombre = restriccion.nombre });
+            if (usuario.restricciones != null && usuario.restricciones.Any()) {
+                foreach (var restriccion in usuario.restricciones) {
+                    if (string.IsNullOrWhiteSpace(restriccion.nombre))
+                        continue;
+
+                    string rquery = @"INSERT INTO RestriccionesUsuarios (idRestriccion, idUsuario)
+                                      SELECT id, @idUsuario
+                                      FROM Restricciones
+                                      WHERE nombre = @nombre";
+                    connection.Execute(rquery, new { idUsuario = usuario.id, nombre = restriccion.nombre.Trim() });
                 }
             }
         }
@@ -38,7 +44,7 @@ public class DB
                 return null;
 
             //busca las restricciones del usuario
-            string rquery = @"SELECT r.id, r.nombre, r.descripcion FROM RestriccionesUsuario ru
+            string rquery = @"SELECT r.id, r.nombre, r.descripcion FROM RestriccionesUsuarios ru
                                 JOIN Restricciones r ON ru.idRestriccion = r.id WHERE ru.idUsuario = @pidUsuario";
             List<Restriccion> restricciones = connection.Query<Restriccion>(rquery, new { pidUsuario = usuario.id }).ToList();
             usuario.restricciones = restricciones;
