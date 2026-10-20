@@ -1,31 +1,55 @@
-html {
-  font-size: 14px;
-}
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+* {
+  box-sizing: border-box;
 }
 
 body {
-  margin-bottom: 60px;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.LandingPage nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  min-height: 72px;
+  padding: 10px 40px;
+  background-color: #168e7b;
+  border-bottom: 3px solid #f5e8a5;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.LandingPage header img {
+  width: 60px;
+  height: 48px;
+  object-fit: contain;
+} 
+
+.LandingPage header form{
+  flex: 1;
+  min-width: 100px;
+  height: 28px;
+  padding: 0 18px;
+  border: 1px solid #f3d46c;
+  border-radius: 20px;
+  outline: none;
+  background-color: #fff8d2;
+  color: #168e7b;
+  font-size: 12px;
+}
+
+.LandingPage header form::placeholder {
+  color: #e5ae37;
+}
+
+
+.LandingPage nav button {
+  height: 36px;
+  border: 1px solid #f3d46c;
+  border-radius: 22px;
+  background-color: #fff8d2;
+  color: #e5ae37;
+  font-size: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
 }
