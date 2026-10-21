@@ -1,18 +1,36 @@
-﻿﻿<head>
-    <title>LandingPage</title>
-</head>
-<body class="LandingPage">
-    <header>
-        <img src="/Images/logotipo.svg">
-        <nav>
-            <form action="">
-                <input type="text" placeholder="Buscar" />
-            </form>
-            <ul>
-                <li><a href="LoginRegis/Registro">Registrarse</a></li>
-                <li><a href="LoginRegis/Login">Inicio Sesión</a></li>
-            </ul>
+﻿﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Inicio";
+}
+
+<section class="landing-content">
+    <h1>VEAMOS QUE TE OFRECEMOS</h1>
+
+    <section class="offer-row">
+        <div class="map-card preview-map-left">
+            <div class="map-surface map-small">
+                <div class="cta-bubble">INICIAR SESIÓN</div>
+            </div>
+        </div>
+
+        <div class="map-card preview-map-right">
+            <div class="map-surface map-large"></div>
+        </div>
+    </section>
+
+    <div class="tab-section-shell">
+        <nav class="tab-bar" aria-label="Navegación principal">
+            <button class="tab">RESTAURANTES</button>
+            <button class="tab">MAPA</button>
+            <button class="tab">RESEÑAS</button>
         </nav>
-    </header>
-</body>
-</html>
+    </div>
+
+    <section class="desktop-panel">
+        <div class="panel-inner">
+            <button class="arrow left" aria-label="Anterior">&#8249;</button>
+            <div class="circle"></div>
+            <button class="arrow right" aria-label="Siguiente">&#8250;</button>
+        </div>
+    </section>
+</section>

@@ -4,23 +4,71 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - VEMOS</title>
-    <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/VEMOS.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <div>
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <header class="topbar">
+        <div class="brand-wrap">
+            <a href="/" class="brand-link" aria-label="Ir a inicio">
+                <img src="~/Images/Logotipo.svg" alt="VEMOS" class="brand-logo" />
+            </a>
 
-    <footer class="border-top footer text-muted">
-        <div>
-            &copy; 2026 - VEMOS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <form class="search-form" action="/Buscar" method="get" role="search">
+                <input id="site-search" name="q" type="search" class="search-input" placeholder="Buscar..." aria-label="Buscar" />
+                <button type="submit" class="search-button" aria-label="Buscar">></button>
+            </form>
+
+            <nav class="auth-links" aria-label="Autenticación">
+                <a href="/LoginRegis/Registro">Regístrate</a>
+                <a href="/LoginRegis/Login">Iniciar sesión</a>
+            </nav>
         </div>
+    </header>
+
+    <main role="main" class="page-main">
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-brand">
+            <img src="~/Images/Logotipo.svg" alt="VEMOS" class="footer-logo" />
+        </div>
+
+        <div class="footer-columns">
+            <div>
+                <h4>Navegación</h4>
+                <ul>
+                    <li>Inicio</li>
+                    <li>Restaurantes</li>
+                    <li>Mapa</li>
+                    <li>Contacto</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Restricciones</h4>
+                <ul>
+                    <li>Nosotros</li>
+                    <li>FAQ</li>
+                    <li>Políticas</li>
+                    <li>Ayuda</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Comunidad</h4>
+                <ul>
+                    <li>Instagram</li>
+                    <li>Tik Tok</li>
+                    <li>Mail</li>
+                    <li>Discord</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-copy">© 2026 VEMOS. Todos los derechos reservados.</div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

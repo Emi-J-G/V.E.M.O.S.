@@ -351,7 +351,6 @@ C:\Users\49929524\VEMOS\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
 C:\Users\49929524\VEMOS\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\49929524\VEMOS\obj\Debug\net9.0\scopedcss\bundle\VEMOS.styles.css
 C:\Users\49929524\VEMOS\obj\Debug\net9.0\scopedcss\projectbundle\VEMOS.bundle.scp.css
-C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\epmsjr1yix-b9sayid5wm.gz
 C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\p5ivqj0615-61n19gt1b8.gz
 C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\vtn9k59woc-t1cqhe9u97.gz
 C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\lpp1ij4e3m-c2jlpeoesf.gz
@@ -424,7 +423,11 @@ C:\Users\49929524\VEMOS\obj\Debug\net9.0\refint\VEMOS.dll
 C:\Users\49929524\VEMOS\obj\Debug\net9.0\VEMOS.pdb
 C:\Users\49929524\VEMOS\obj\Debug\net9.0\VEMOS.genruntimeconfig.cache
 C:\Users\49929524\VEMOS\obj\Debug\net9.0\ref\VEMOS.dll
-C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\ez168owu4b-5zxwxfl0ya.gz
 C:\Users\49836834\VEMOS\obj\Debug\net9.0\compressed\epmsjr1yix-uvabuir5jv.gz
 C:\Users\49836834\VEMOS\obj\Debug\net9.0\compressed\13s1vkofal-t3wg9y3igp.gz
 C:\Users\49836834\VEMOS\obj\Debug\net9.0\compressed\ez168owu4b-86iyzq3or5.gz
+C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\13s1vkofal-t3wg9y3igp.gz
+C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\ez168owu4b-86iyzq3or5.gz
+C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\epmsjr1yix-k1b9wb0q7r.gz
+C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\0rinf4b3qq-a8u22kdje3.gz
+C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\u25hze6j3l-ae1ff71qnm.gz
