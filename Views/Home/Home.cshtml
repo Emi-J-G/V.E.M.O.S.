@@ -1,20 +1,36 @@
 @{
-    ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">V.E.M.O.S.</h1>
-    @if (!string.IsNullOrWhiteSpace(ViewBag.Usuario as string))
-    {
-        <p>Sesión iniciada como @ViewBag.NombreCompleto (@ViewBag.Usuario)</p>
-        <form action='@Url.Action("Logout", "LoginRegis")' method="POST">
-            <input type="submit" value="Cerrar sesión" />
-        </form>
-    }
-    else
-    {
-        <a href="@Url.Action("Registro", "LoginRegis")">Registrarse</a>
-        <a href="@Url.Action("Login", "LoginRegis")">Iniciar sesión</a>
-    }
-    <p>@ViewBag.Mensaje</p>
-</div>
+<section class="landing-content">
+    <h1>VEMOS QUE TE OFRECEMOS</h1>
+
+    <section class="offer-row">
+        <div class="map-card preview-map-left">
+            <div class="map-surface map-small">
+                <div class="cta-bubble">INICIAR SESIÓN</div>
+            </div>
+        </div>
+
+        <div class="map-card preview-map-right">
+            <div class="map-surface map-large"></div>
+        </div>
+    </section>
+
+    <div class="tab-section-shell">
+        <nav class="tab-bar" aria-label="Navegación principal">
+            <button class="tab">RESTAURANTES</button>
+            <button class="tab">MAPA</button>
+            <button class="tab">RESEÑAS</button>
+        </nav>
+    </div>
+
+    <section class="desktop-panel">
+        <div class="panel-inner">
+            <button class="arrow left" aria-label="Anterior"><</button>
+            <div class="circle"></div>
+            <button class="arrow right" aria-label="Siguiente">></button>
+        </div>
+    </section>
+</section>

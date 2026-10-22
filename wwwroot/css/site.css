@@ -117,6 +117,54 @@ body {
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
+.user-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+.header-option-button,
+.profile-button {
+  border: none;
+  cursor: pointer;
+}
+
+.header-option-button {
+  background: #FFF7CC;
+  color: #DE9929;
+  border-radius: 18px;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.profile-button {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #FFF7CC;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  padding: 0;
+}
+
+.profile-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #188D78;
+  color: #FFF7CC;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
 .landing-content {
   width: 100%;
   background: #FFF7CC;

@@ -9,6 +9,16 @@
     <link rel="stylesheet" href="~/VEMOS.styles.css" asp-append-version="true" />
 </head>
 <body>
+    @{
+        var usuario = Context.Session.GetString("Usuario");
+        var nombreCompleto = Context.Session.GetString("NombreCompleto");
+        var inicialUsuario = !string.IsNullOrWhiteSpace(nombreCompleto)
+            ? nombreCompleto.Trim()[0].ToString().ToUpperInvariant()
+            : (!string.IsNullOrWhiteSpace(usuario)
+                ? usuario.Trim()[0].ToString().ToUpperInvariant()
+                : "U");
+    }
+
     <header class="topbar">
         <div class="brand-wrap">
             <a href="/" class="brand-link" aria-label="Ir a inicio">
@@ -20,10 +30,22 @@
                 <button type="submit" class="search-button" aria-label="Buscar">></button>
             </form>
 
-            <nav class="auth-links" aria-label="Autenticación">
-                <a href="/LoginRegis/Registro">Regístrate</a>
-                <a href="/LoginRegis/Login">Iniciar sesión</a>
-            </nav>
+            @if (!string.IsNullOrWhiteSpace(usuario))
+            {
+                <nav class="user-header-actions" aria-label="Perfil de usuario">
+                    <button type="button" class="header-option-button">Opciones</button>
+                    <button type="button" class="profile-button" aria-label="Perfil del usuario">
+                        <span class="profile-avatar">@inicialUsuario</span>
+                    </button>
+                </nav>
+            }
+            else
+            {
+                <nav class="auth-links" aria-label="Autenticación">
+                    <a href="/LoginRegis/Registro">Registrarse</a>
+                    <a href="/LoginRegis/Login">Iniciar sesión</a>
+                </nav>
+            }
         </div>
     </header>
 

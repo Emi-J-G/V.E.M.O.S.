@@ -14,11 +14,13 @@ public class LoginRegisController : Controller
     }
 
     //desde index manda a view de registro
+    [HttpPost("/LoginRegis/Registro")]
     public IActionResult Registro(string mensaje)
     {
         ViewBag.Mensaje = mensaje;
         return View();
     }
+
     //registra al user en la base de datos y lo loguea
     [HttpPost("/LoginRegis/Registrar")]
     public IActionResult Registrar(string nombreUsuario, string nombre, string apellido, string contrasena, string email, string[] restricciones, string tipo)
@@ -59,16 +61,22 @@ public class LoginRegisController : Controller
         return RedirectToAction("Home", "Home");
     }
 
-    public IActionResult Login()
+    [HttpPost("/LoginRegis/Login")]
+    public IActionResult Login(string mensaje)
     {
+        ViewBag.Mensaje = mensaje;
         return View();
     }
 
     //logea un user
     [HttpPost("/LoginRegis/Loguear")]
     public IActionResult Loguear(string nombreUsuario, string contrasena) {
+        if (string.IsNullOrWhiteSpace(nombreUsuario) || string.IsNullOrWhiteSpace(contrasena))
+        {
+            return RedirectToAction("Login", "LoginRegis", new { mensaje = "Debe completar usuario y contraseña." });
+        }
+
         DB db = new DB();
-        //se fija si usuario existe
         Usuario usuario = db.nomUsuarioExiste(nombreUsuario);
         if (usuario != null)
         {
@@ -79,14 +87,12 @@ public class LoginRegisController : Controller
             //usuario logueado correctamente
             HttpContext.Session.SetString("Usuario", nombreUsuario);
             HttpContext.Session.SetString("NombreCompleto", usuario.nombre);
-            ViewBag.Mensaje = "Bienvenido, " + usuario.nombre + "!";
             return RedirectToAction("Index", "Home");
         }
         else {
-            //usuario no encontrado
-            ViewBag.Mensaje = "Usuario o contraseña incorrectos.";
+            //usuario no encontrado o contraseña incorrecta
+            return RedirectToAction("Login", "LoginRegis", new { mensaje = "Usuario o contraseña incorrectos." });
         }
-        return RedirectToAction("Home", "Home");
     }
 
     [HttpPost]
