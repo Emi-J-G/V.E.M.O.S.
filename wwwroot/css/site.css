@@ -50,13 +50,6 @@ body {
   text-decoration: none;
 }
 
-.brand-logo {
-  width: 180px;
-  height: 58px;
-  object-fit: contain;
-  filter: none;
-}
-
 .search-form {
   flex: 1;
   display: flex;
@@ -327,10 +320,9 @@ body {
   border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
-.footer-logo-shell {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
+.logo-shell {
+  width: 100px;
+  height: 100px;
   background: #FFF7CC;
   display: flex;
   align-items: center;
@@ -338,10 +330,9 @@ body {
   box-shadow: 0 0 0 10px rgba(255,247,204,0.34);
 }
 
-.footer-logo {
+.logo {
   width: 180px;
-  height: auto;
-  object-fit: contain;
+  height: 100px;
 }
 
 .footer-columns {

@@ -14,7 +14,7 @@ public class LoginRegisController : Controller
     }
 
     //desde index manda a view de registro
-    [HttpPost("/LoginRegis/Registro")]
+    [HttpGet("/LoginRegis/Registro")]
     public IActionResult Registro(string mensaje)
     {
         ViewBag.Mensaje = mensaje;
@@ -61,7 +61,7 @@ public class LoginRegisController : Controller
         return RedirectToAction("Home", "Home");
     }
 
-    [HttpPost("/LoginRegis/Login")]
+    [HttpGet("/LoginRegis/Login")]
     public IActionResult Login(string mensaje)
     {
         ViewBag.Mensaje = mensaje;

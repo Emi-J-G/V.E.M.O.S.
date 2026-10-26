@@ -429,7 +429,6 @@ C:\Users\49836834\VEMOS\obj\Debug\net9.0\compressed\ez168owu4b-86iyzq3or5.gz
 C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\13s1vkofal-t3wg9y3igp.gz
 C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\ez168owu4b-86iyzq3or5.gz
 C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\0rinf4b3qq-a8u22kdje3.gz
-C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\epmsjr1yix-cx2r9r1pwy.gz
 C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\u25hze6j3l-srxng6o2nt.gz
 C:\Users\50073278\VEMOS\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\50073278\VEMOS\bin\Debug\net9.0\appsettings.json
@@ -577,3 +576,4 @@ C:\Users\50073278\VEMOS\obj\Debug\net9.0\refint\VEMOS.dll
 C:\Users\50073278\VEMOS\obj\Debug\net9.0\VEMOS.pdb
 C:\Users\50073278\VEMOS\obj\Debug\net9.0\VEMOS.genruntimeconfig.cache
 C:\Users\50073278\VEMOS\obj\Debug\net9.0\ref\VEMOS.dll
+C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\epmsjr1yix-5wk74f8gkz.gz
