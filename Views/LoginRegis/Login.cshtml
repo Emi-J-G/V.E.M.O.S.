@@ -1,17 +1,29 @@
 @{
-    ViewData["Title"] = "iniciar sesion";
+    ViewData["Title"] = "Iniciar sesión";
 }
-<h1>@ViewData["Title"]</h1>
 
-<div>
-    @if (!string.IsNullOrEmpty(ViewBag.Mensaje as string))
-    {
-        <p>@ViewBag.Mensaje</p>
-    }
-    <form action='@Url.Action("Loguear", "LoginRegis")' method="POST">
-        <input type="text" name="nombreUsuario" placeholder="Ingrese su nombre de usuario" required />
-        <input type="password" name="contrasena" placeholder="Ingrese su contraseña" required />
-        <input type="submit" value="Ingresar" />
-        <a href="@Url.Action("Registro", "LoginRegis")">Registrarse</a>
-    </form>
+<div class="auth-page">
+    <div class="login-card">
+        <h1 class="auth-title">@ViewData["Title"]</h1>
+
+        @if (!string.IsNullOrEmpty(ViewBag.Mensaje as string))
+        {
+            <p class="auth-message">@ViewBag.Mensaje</p>
+        }
+
+        <form class="login-form" action='@Url.Action("Loguear", "LoginRegis")' method="POST">
+            <input class="auth-input" type="text" name="nombreUsuario" placeholder="Nombre de usuario" required />
+            <input class="auth-input" type="password" name="contrasena" placeholder="Contraseña" required />
+            <button class="auth-submit" type="submit">Ingresar</button>
+        </form>
+
+        <div class="auth-divider">
+            <span>Otras opciones</span>
+        </div>
+
+        <div class="auth-alt-actions">
+            <a class="auth-link" href="@Url.Action("Registro", "LoginRegis")">Registrarse</a>
+            <button class="auth-google" type="button">Iniciar sesión con Google</button>
+        </div>
+    </div>
 </div>

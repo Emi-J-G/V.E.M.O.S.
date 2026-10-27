@@ -2,34 +2,48 @@
     ViewData["Title"] = "Registro";
 }
 
-<div class="text-center">
-    @if (!string.IsNullOrEmpty(ViewBag.Mensaje as string))
-    {
-        <p>@ViewBag.Mensaje</p>
-    }
-    <h1 class="display-4">Registro de usuario</h1>
+<div class="auth-page register-page">
+    <div class="login-card register-card">
+        <h1 class="auth-title">@ViewData["Title"]</h1>
 
-    <form action='@Url.Action("Registrar", "LoginRegis")' method="POST" onsubmit="return validateRegisterForm();">
-        <input type="text" id="nombreUsuario" name="nombreUsuario" placeholder="Ingrese su nombre de usuario" required />
-        <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required />
-        <input type="text" id="apellido" name="apellido" placeholder="Ingrese su apellido" required />
-        <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" required />
-        <input type="email" id="email" name="email" placeholder="Ingrese su correo electrónico" required />
-        <select id="tipo" name="tipo">
-            <option value="Cliente">Cliente</option>
-            <option value="Restaurante">Restaurante</option>
-        </select>
-        <div>
-            <label><input type="checkbox" name="restricciones" value="Celiaquía" /> Celiaquía</label>
-            <label><input type="checkbox" name="restricciones" value="Diabetes" /> Diabetes</label>
-            <label><input type="checkbox" name="restricciones" value="Kosher" /> Kosher</label>
-            <label><input type="checkbox" name="restricciones" value="Halal" /> Halal</label>
-            <label><input type="checkbox" name="restricciones" value="Lactosa" /> Lactosa</label>
-            <label><input type="checkbox" name="restricciones" value="Vegano" /> Vegano</label>
-            <label><input type="checkbox" name="restricciones" value="Vegetariano" /> Vegetariano</label>
-            <label><input type="checkbox" name="restricciones" value="Alergias" /> Alergias</label>
+        @if (!string.IsNullOrEmpty(ViewBag.Mensaje as string))
+        {
+            <p class="auth-message">@ViewBag.Mensaje</p>
+        }
+
+        <form class="login-form register-form" action='@Url.Action("Registrar", "LoginRegis")' method="POST" onsubmit="return validateRegisterForm();">
+            <input class="auth-input" type="text" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de usuario" required />
+            <input class="auth-input" type="text" id="nombre" name="nombre" placeholder="Nombre" required />
+            <input class="auth-input" type="text" id="apellido" name="apellido" placeholder="Apellido" required />
+            <input class="auth-input" type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required />
+            <input class="auth-input" type="email" id="email" name="email" placeholder="Correo electrónico" required />
+
+            <select class="auth-select" id="tipo" name="tipo">
+                <option value="Cliente">Cliente</option>
+                <option value="Restaurante">Restaurante</option>
+            </select>
+
+            <div class="restrictions-box">
+                <label><input type="checkbox" name="restricciones" value="Celiaquía" /> Celiaquía</label>
+                <label><input type="checkbox" name="restricciones" value="Diabetes" /> Diabetes</label>
+                <label><input type="checkbox" name="restricciones" value="Kosher" /> Kosher</label>
+                <label><input type="checkbox" name="restricciones" value="Halal" /> Halal</label>
+                <label><input type="checkbox" name="restricciones" value="Lactosa" /> Lactosa</label>
+                <label><input type="checkbox" name="restricciones" value="Vegano" /> Vegano</label>
+                <label><input type="checkbox" name="restricciones" value="Vegetariano" /> Vegetariano</label>
+                <label><input type="checkbox" name="restricciones" value="Alergias" /> Alergias</label>
+            </div>
+
+            <button class="auth-submit" type="submit">Registrarse</button>
+        </form>
+
+        <div class="auth-divider auth-divider-inline">
+            <span>Continuar con</span>
         </div>
-        <input type="submit" value="Registrarse" />
-    </form>
-    <a href="@Url.Action("Login", "LoginRegis")">Iniciar sesión</a>
+
+        <div class="auth-alt-actions auth-inline-actions">
+            <button class="auth-google" type="button">Google</button>
+            <a class="auth-link" href="@Url.Action("Login", "LoginRegis")">Iniciar sesión</a>
+        </div>
+    </div>
 </div>

@@ -576,4 +576,5 @@ C:\Users\50073278\VEMOS\obj\Debug\net9.0\refint\VEMOS.dll
 C:\Users\50073278\VEMOS\obj\Debug\net9.0\VEMOS.pdb
 C:\Users\50073278\VEMOS\obj\Debug\net9.0\VEMOS.genruntimeconfig.cache
 C:\Users\50073278\VEMOS\obj\Debug\net9.0\ref\VEMOS.dll
-C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\epmsjr1yix-5wk74f8gkz.gz
+C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\epmsjr1yix-5xeu9a6b9a.gz
+C:\Users\49929524\VEMOS\obj\Debug\net9.0\compressed\znudet4z67-aoawxhe14o.gz
