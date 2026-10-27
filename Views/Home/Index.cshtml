@@ -3,34 +3,93 @@
     ViewData["Title"] = "Inicio";
 }
 
-<section class="landing-content">
-    <h1>VEMOS QUE TE OFRECEMOS</h1>
+<section class="landing-hero">
+    <div class="hero-copy">
+        <div class="pill-badge">
+            <span class="pill-icon">♡</span>
+            <span>Comer afuera también es para vos</span>
+        </div>
 
-    <section class="offer-row">
-        <div class="map-card preview-map-left">
-            <div class="map-surface map-small">
-                <div class="cta-bubble">INICIAR SESIÓN</div>
+        <h1>
+            Encontrá lugares<br />
+            para comer sin<br />
+            preocupaciones
+        </h1>
+
+        <div class="hero-divider"></div>
+
+        <p>
+            Buscá restaurantes que se adapten a tus necesidades alimentarias.<br />
+            Descubrí opciones, consultá información y elegí con más tranquilidad.
+        </p>
+
+        <div class="search-strip">
+            <div class="search-input-wrap">
+                <span class="search-icon">⌕</span>
+                <input type="text" placeholder="Buscar un restaurante o un barrio..." aria-label="Buscar restaurante o barrio" />
             </div>
+            <button type="button" aria-label="Buscar">→</button>
         </div>
 
-        <div class="map-card preview-map-right">
-            <div class="map-surface map-large"></div>
-        </div>
-    </section>
+        <div class="need-label">Explorá según tus necesidades:</div>
 
-    <div class="tab-section-shell">
-        <nav class="tab-bar" aria-label="Navegación principal">
-            <button class="tab">RESTAURANTES</button>
-            <button class="tab">MAPA</button>
-            <button class="tab">RESEÑAS</button>
-        </nav>
+        <div class="restriction-list">
+            <label class="chip"><input type="checkbox" checked /> Sin TACC</label>
+            <label class="chip"><input type="checkbox" checked /> Sin lactosa</label>
+            <label class="chip"><input type="checkbox" checked /> Vegetariano</label>
+            <label class="chip"><input type="checkbox" checked /> Vegano</label>
+        </div>
     </div>
 
-    <section class="desktop-panel">
-        <div class="panel-inner">
-            <button class="arrow left" aria-label="Anterior"><</button>
-            <div class="circle"></div>
-            <button class="arrow right" aria-label="Siguiente">></button>
+    <div class="hero-visual">
+        <div class="visual-card">
+            <div class="float-badge">Todas los lugares.<br />Todas las personas.</div>
+
+            <div class="store-panel">
+                <div class="store-sign">artunto</div>
+            </div>
+
+            <div class="simple-filter">
+                <div class="mini-check"></div>
+                <div class="simple-copy">
+                    <strong>Filtrá de forma simple</strong>
+                    <span>Opciones según tus preferencias</span>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<section class="landing-features" aria-label="Características principales">
+    <article class="feature-card">
+        <div class="feature-icon icon-map"></div>
+        <div class="feature-text">
+            <h2>Explorá</h2>
+            <p>Encontrá restaurantes<br/>en tu zona.</p>
+        </div>
+    </article>
+
+    <article class="feature-card">
+        <div class="feature-icon icon-filter"></div>
+        <div class="feature-text">
+            <h2>Filtrá</h2>
+            <p>Elegí según tus<br />necesidades alimentarias.</p>
+        </div>
+    </article>
+
+    <article class="feature-card">
+        <div class="feature-icon icon-star"></div>
+        <div class="feature-text">
+            <h2>Descubrí</h2>
+            <p>Consultá menú e<br />información del lugar.</p>
+        </div>
+    </article>
+
+    <article class="feature-card">
+        <div class="feature-icon icon-share"></div>
+        <div class="feature-text">
+            <h2>Compartí</h2>
+            <p>Ayudá con reseñas<br />y experiencias.</p>
+        </div>
+    </article>
 </section>
