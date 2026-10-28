@@ -12,7 +12,7 @@ public class DB
             connection.Open(); //mantiene la bd abierta mientras se ejecuta el using, es mas eficiente bajo varios inserts.
 
             //inserta user
-            string query = "INSERT INTO Usuarios (username, nombre, apellido, email, contrasena, tipo) VALUES (@username, @nombre, @apellido, @email, @contrasena, @tipo); SELECT CAST(SCOPE_IDENTITY() AS INT);";
+            string query = "exec insertUser @username, @nombre, @apellido, @email, @contrasena, @tipo";
             int nuevoId = connection.ExecuteScalar<int>(query, usuario);
             usuario.id = nuevoId;
 
