@@ -87,7 +87,7 @@ public class LoginRegisController : Controller
             //usuario logueado correctamente
             HttpContext.Session.SetString("Usuario", nombreUsuario);
             HttpContext.Session.SetString("NombreCompleto", usuario.nombre);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Home", "Home");
         }
         else {
             //usuario no encontrado o contraseña incorrecta

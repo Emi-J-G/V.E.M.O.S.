@@ -569,11 +569,12 @@ button, input {
   max-width: none;
   margin: 0;
   background: #FFF7CC;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: 30px;
-  min-height: 48px;
-  padding: 4px 10px 4px 12px;
+  gap: 16px;
+  min-height: 52px;
+  padding: 6px 14px;
 }
 
 .brand-link {
@@ -585,34 +586,32 @@ button, input {
 
 .logo {
   display: block;
-  width: 160px;
-  height: 39px;
+  width: 185px;
+  height: 46px;
   object-fit: contain;
 }
 
 .search-form {
-  flex: 1;
+  width: min(100%, 881px);
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 425px;
-  min-width: 180px;
-  margin: 0;
+  margin: 0 auto;
   background: transparent;
   border: 1px solid #188D78;
   border-radius: 999px;
-  padding: 0 11px;
-  height: 31px;
+  padding: 0 12px;
+  height: 64px;
 }
 
 .search-input {
   flex: 1;
   min-width: 0;
-  height: 27px;
+  height: 56px;
   border: none;
   background: transparent;
   color: #DE9929;
-  font-size: 0.7rem;
+  font-size: 1rem;
   outline: none;
 }
 
@@ -630,33 +629,17 @@ button, input {
   cursor: pointer;
 }
 
-.search-icon {
-  position: relative;
-  flex: 0 0 14px;
-  width: 14px;
-  height: 14px;
-  margin-right: 8px;
-  border: 1.5px solid #188D78;
-  border-radius: 50%;
-}
-
-.search-icon::after {
-  position: absolute;
-  right: -5px;
-  bottom: -3px;
-  width: 6px;
-  height: 1.5px;
-  background: #188D78;
-  content: "";
-  transform: rotate(48deg);
-  transform-origin: left center;
-}
-
 .user-header-actions {
   display: flex;
   align-items: center;
-  gap: 22px;
-  margin-left: auto;
+  gap: 18px;
+  margin-left: 0;
+  justify-content: flex-end;
+}
+
+.search-icon img{
+  width: 40px;
+  height: 40px;
 }
 
 .header-nav-link {
@@ -664,10 +647,10 @@ button, input {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  min-width: 34px;
+  gap: 3px;
+  min-width: 42px;
   color: #188D78;
-  font-size: 0.42rem;
+  font-size: 0.48rem;
   line-height: 1;
   text-decoration: none;
   white-space: nowrap;
@@ -679,8 +662,8 @@ button, input {
 }
 
 .header-home-link {
-  min-height: 25px;
-  padding: 0 12px;
+  min-height: 28px;
+  padding: 0 14px;
   border-radius: 999px;
   background: #F1B52E;
   color: #188D78;
@@ -689,13 +672,13 @@ button, input {
 .header-nav-icon {
   position: relative;
   display: block;
-  width: 12px;
-  height: 12px;
+  width: 15px;
+  height: 15px;
 }
 
 .header-home-icon::before {
   position: absolute;
-  inset: 3px 2px 1px;
+  inset: 4px 2px 1px;
   border: 1px solid currentColor;
   border-top: 0;
   content: "";
@@ -704,9 +687,9 @@ button, input {
 .header-home-icon::after {
   position: absolute;
   top: 1px;
-  left: 2px;
-  width: 7px;
-  height: 7px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
   border-top: 1px solid currentColor;
   border-left: 1px solid currentColor;
   content: "";
@@ -716,7 +699,7 @@ button, input {
 .header-map-icon {
   border: 1px solid currentColor;
   border-radius: 50% 50% 50% 0;
-  transform: rotate(-45deg) scale(0.75);
+  transform: rotate(-45deg) scale(0.82);
 }
 
 .header-map-icon::after {
@@ -732,26 +715,26 @@ button, input {
   position: absolute;
   bottom: 1px;
   width: 1px;
-  height: 10px;
+  height: 11px;
   background: currentColor;
   content: "";
 }
 
 .header-restaurant-icon::before {
-  left: 3px;
-  box-shadow: 3px 0 0 currentColor;
+  left: 4px;
+  box-shadow: 4px 0 0 currentColor;
 }
 
 .header-restaurant-icon::after {
   right: 2px;
-  height: 7px;
+  height: 8px;
 }
 
 .header-favorite-icon::before {
   color: currentColor;
   content: "☆";
-  font-size: 15px;
-  line-height: 11px;
+  font-size: 18px;
+  line-height: 13px;
 }
 
 .profile-button {
@@ -769,20 +752,20 @@ button, input {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 32px;
+  height: 32px;
   border: 1px solid #188D78;
   border-radius: 50%;
   color: #188D78;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .profile-chevron {
   width: 0;
   height: 0;
-  border-top: 5px solid #DE9929;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
+  border-top: 6px solid #DE9929;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
 }
 
 .profile-button:focus-visible,
@@ -798,6 +781,7 @@ button, input {
   justify-content: flex-end;
   gap: 12px;
   min-width: 220px;
+  margin-left: 0;
 }
 
 .auth-links a {
@@ -927,7 +911,6 @@ button, input {
   font-size: 2.2rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 6px 16px rgba(24, 141, 120, 0.18);
 }
 
 .need-label {
@@ -1384,7 +1367,7 @@ button, input {
 }
 
 .login-card {
-  width: min(100%, 280px);
+  width: min(100%, 420px);
   overflow: hidden;
   border: 1px solid #188D78;
   border-radius: 24px;
@@ -1393,22 +1376,22 @@ button, input {
 }
 
 .register-card {
-  width: min(100%, 340px);
+  width: min(100%, 500px);
 }
 
 .auth-title {
-  margin: 15px 20px 13px;
+  margin: 20px 24px 16px;
   color: #FFF7CC;
-  font-size: 1.45rem;
+  font-size: 2rem;
   font-weight: 400;
   line-height: 1.2;
   text-align: center;
 }
 
 .auth-message {
-  margin: 0 24px 12px;
+  margin: 0 24px 14px;
   color: #FFF7CC;
-  font-size: 0.68rem;
+  font-size: 0.82rem;
   line-height: 1.4;
   text-align: center;
 }
@@ -1416,27 +1399,27 @@ button, input {
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 0 66px 16px;
+  gap: 14px;
+  padding: 0 52px 18px;
 }
 
 .register-form {
-  padding-right: 66px;
-  padding-left: 66px;
+  padding-right: 52px;
+  padding-left: 52px;
 }
 
 .auth-input,
 .auth-select {
   width: 100%;
-  height: 22px;
+  height: 46px;
   min-width: 0;
-  padding: 0 9px;
+  padding: 0 14px;
   border: 1px solid #DE9929;
-  border-radius: 999px;
+  border-radius: 14px;
   outline: none;
   background: #FFF7CC;
   color: #188D78;
-  font-size: 0.55rem;
+  font-size: 1rem;
 }
 
 .auth-input::placeholder {
@@ -1452,16 +1435,16 @@ button, input {
 .auth-select {
   appearance: none;
   background-image: linear-gradient(45deg, transparent 50%, #DE9929 50%), linear-gradient(135deg, #DE9929 50%, transparent 50%);
-  background-position: calc(100% - 11px) 9px, calc(100% - 7px) 9px;
+  background-position: calc(100% - 16px) 19px, calc(100% - 12px) 19px;
   background-repeat: no-repeat;
-  background-size: 4px 4px, 4px 4px;
+  background-size: 6px 6px, 6px 6px;
 }
 
 .restrictions-box {
   margin: 0;
-  padding: 8px 10px 9px;
+  padding: 12px 14px 12px;
   border: 1px solid rgba(255, 247, 204, 0.75);
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .restrictions-box legend {
@@ -1469,29 +1452,29 @@ button, input {
   margin: 0;
   padding: 0 4px;
   color: #FFF7CC;
-  font-size: 0.58rem;
+  font-size: 0.8rem;
   font-weight: 700;
 }
 
 .restrictions-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6px 9px;
+  gap: 10px 12px;
 }
 
 .restrictions-grid label {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   color: #FFF7CC;
-  font-size: 0.52rem;
-  line-height: 1.1;
+  font-size: 0.8rem;
+  line-height: 1.2;
   cursor: pointer;
 }
 
 .restrictions-grid input {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   margin: 0;
   accent-color: #DE9929;
 }
@@ -1502,20 +1485,20 @@ button, input {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 29px;
+  min-height: 46px;
   border: 1px solid #DE9929;
   border-radius: 999px;
   background: #DE9929;
   color: #FFF7CC;
-  font-size: 0.58rem;
+  font-size: 1rem;
   text-decoration: none;
   cursor: pointer;
 }
 
 .auth-submit {
   align-self: center;
-  min-width: 76px;
-  padding: 0 14px;
+  min-width: 120px;
+  padding: 0 18px;
 }
 
 .auth-submit:hover,
@@ -1532,9 +1515,9 @@ button, input {
 .auth-divider {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
   color: #FFF7CC;
-  font-size: 0.58rem;
+  font-size: 0.8rem;
 }
 
 .auth-divider::before,
@@ -1548,33 +1531,33 @@ button, input {
 .auth-alt-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 16px 12px;
+  gap: 12px;
+  padding: 12px 16px 16px;
   background: rgba(255, 247, 204, 0.08);
 }
 
 .auth-google {
   flex: 1;
-  gap: 7px;
+  gap: 8px;
   min-width: 0;
-  padding: 0 9px;
+  padding: 0 12px;
   border-color: #FFF7CC;
   background: #FFF7CC;
   color: #188D78;
-  font-size: 0.53rem;
+  font-size: 0.95rem;
   white-space: nowrap;
 }
 
 .google-mark {
   color: #4285F4;
-  font-size: 0.78rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
 .auth-link {
   flex: 0 0 auto;
-  padding: 0 11px;
-  font-size: 0.52rem;
+  padding: 0 16px;
+  font-size: 0.9rem;
 }
 
 .register-card .auth-divider {

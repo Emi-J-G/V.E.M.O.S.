@@ -499,7 +499,6 @@ C:\Users\50073278\VEMOS\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
 C:\Users\50073278\VEMOS\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\50073278\VEMOS\obj\Debug\net9.0\scopedcss\bundle\VEMOS.styles.css
 C:\Users\50073278\VEMOS\obj\Debug\net9.0\scopedcss\projectbundle\VEMOS.bundle.scp.css
-C:\Users\50073278\VEMOS\obj\Debug\net9.0\compressed\epmsjr1yix-iuc33t7p94.gz
 C:\Users\50073278\VEMOS\obj\Debug\net9.0\compressed\p5ivqj0615-61n19gt1b8.gz
 C:\Users\50073278\VEMOS\obj\Debug\net9.0\compressed\0rinf4b3qq-a8u22kdje3.gz
 C:\Users\50073278\VEMOS\obj\Debug\net9.0\compressed\u25hze6j3l-srxng6o2nt.gz
@@ -846,3 +845,5 @@ C:\Users\usuario\VEMOS\bin\verify-home\runtimes\win-x86\native\Microsoft.Data.Sq
 C:\Users\usuario\VEMOS\bin\verify-home\runtimes\win\lib\net9.0\System.Diagnostics.EventLog.dll
 C:\Users\usuario\VEMOS\bin\verify-home\runtimes\win\lib\net9.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\usuario\VEMOS\obj\Debug\net9.0\compressed\7v9z6qlb6i-{0}-gfmx0z4260-gfmx0z4260.gz
+C:\Users\50073278\VEMOS\obj\Debug\net9.0\compressed\epmsjr1yix-gfmx0z4260.gz
+C:\Users\50073278\VEMOS\obj\Debug\net9.0\compressed\znudet4z67-aoawxhe14o.gz
