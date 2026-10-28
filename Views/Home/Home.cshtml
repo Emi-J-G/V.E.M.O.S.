@@ -3,34 +3,145 @@
     ViewData["Title"] = "Inicio";
 }
 
-<section class="landing-content">
-    <h1>VEMOS QUE TE OFRECEMOS</h1>
+<section class="signed-home-hero" aria-labelledby="signed-home-title">
+    <div class="signed-home-copy">
+        <div class="signed-home-badge">
+            <span aria-hidden="true">✦</span>
+            <span>Tu espacio personal</span>
+        </div>
 
-    <section class="offer-row">
-        <div class="map-card preview-map-left">
-            <div class="map-surface map-small">
-                <div class="cta-bubble">INICIAR SESIÓN</div>
+        <h1 id="signed-home-title">¿Dónde querés<br />comer hoy?</h1>
+
+        <p class="signed-home-description">
+            Descubrí opciones gastronómicas usando tus preferencias<br class="desktop-only" />
+            alimentarias y elegí dónde salir.
+        </p>
+
+        <div class="active-filters">
+            <strong>Tus filtros activos <span aria-hidden="true">·</span> ejemplo</strong>
+            <div class="filter-chips">
+                <span class="filter-chip"><span aria-hidden="true">✓</span> Sin TACC</span>
+                <span class="filter-chip"><span aria-hidden="true">✓</span> Sin lactosa</span>
+                <a class="edit-filters" href="/Home/Index"><span aria-hidden="true">☷</span> Editar filtros</a>
             </div>
         </div>
 
-        <div class="map-card preview-map-right">
-            <div class="map-surface map-large"></div>
+        <div class="signed-home-actions">
+            <a class="signed-home-primary" href="/Mapa">Explorar mapa <span aria-hidden="true">→</span></a>
+            <a class="signed-home-secondary" href="/Favoritos">Mis favoritos</a>
         </div>
-    </section>
-
-    <div class="tab-section-shell">
-        <nav class="tab-bar" aria-label="Navegación principal">
-            <button class="tab">RESTAURANTES</button>
-            <button class="tab">MAPA</button>
-            <button class="tab">RESEÑAS</button>
-        </nav>
     </div>
 
-    <section class="desktop-panel">
-        <div class="panel-inner">
-            <button class="arrow left" aria-label="Anterior"><</button>
-            <div class="circle"></div>
-            <button class="arrow right" aria-label="Siguiente">></button>
+    <div class="signed-home-map-column">
+        <div class="signed-home-map-card">
+            <div class="signed-home-map">
+                <div class="map-label"><span aria-hidden="true">▥</span> Mapa de restaurantes</div>
+                <a class="map-open-button" href="/Mapa">Abrir mapa completo <span aria-hidden="true">→</span></a>
+            </div>
         </div>
-    </section>
+        <div class="map-filter-note"><span aria-hidden="true">♧</span> Aplicá filtros desde el mapa</div>
+    </div>
 </section>
+
+<section class="inspiration-section" aria-labelledby="inspiration-title">
+    <div class="section-heading inspiration-heading">
+        <div>
+            <h2 id="inspiration-title">Inspirate para tu próxima salida</h2>
+            <p>Estas tarjetas muestran ejemplos de opciones que se pueden explorar en V.E.M.O.S.</p>
+        </div>
+        <a class="section-link" href="/Mapa">Ver en el mapa <span aria-hidden="true">→</span></a>
+    </div>
+
+    <div class="inspiration-cards">
+        <article class="inspiration-card">
+            <div class="inspiration-image">
+                <img src="~/Images/plato-3.png" alt="Plato sin gluten" />
+                <span>Sin TACC</span>
+            </div>
+            <h3>Platos sin gluten</h3>
+            <p>Explorá opciones y consultá los detalles de cada establecimiento.</p>
+        </article>
+        <article class="inspiration-card">
+            <div class="inspiration-image">
+                <img src="~/Images/plato-1.png" alt="Plato vegetariano" />
+                <span>Vegetariano</span>
+            </div>
+            <h3>Opciones vegetarianas</h3>
+            <p>Descubrí propuestas para tus preferencias y elegí con más información.</p>
+        </article>
+        <article class="inspiration-card">
+            <div class="inspiration-image">
+                <img src="~/Images/plato-2.png" alt="Hamburguesa de restaurante" />
+                <span>Menús</span>
+            </div>
+            <h3>Conocé los platos</h3>
+            <p>Revisá ingredientes, menús y reseñas antes de tomar una decisión.</p>
+        </article>
+    </div>
+
+    <p class="inspiration-disclaimer">Contenido ilustrativo: las fotos y categorías son ejemplos para diseñar el prototipo, no recomendaciones médicas.</p>
+</section>
+
+<section class="quick-access-section" aria-labelledby="quick-access-title">
+    <div class="section-heading quick-access-heading">
+        <div>
+            <h2 id="quick-access-title">Tus accesos rápidos</h2>
+            <p>Todo lo que necesitás a pocos clics.</p>
+        </div>
+    </div>
+
+    <div class="quick-access-grid">
+        <a class="quick-access-card quick-access-card-primary" href="/Mapa">
+            <span class="quick-access-icon" aria-hidden="true">⌑</span>
+            <span><strong>Abrir el mapa</strong><small>Explorá lugares cerca tuyo.</small></span>
+        </a>
+        <a class="quick-access-card" href="/Favoritos">
+            <span class="quick-access-icon" aria-hidden="true">♡</span>
+            <span><strong>Mis favoritos</strong><small>Volvé a los lugares que guardaste.</small></span>
+        </a>
+        <a class="quick-access-card" href="/Reseñas">
+            <span class="quick-access-icon" aria-hidden="true">☆</span>
+            <span><strong>Reseñas</strong><small>Consultá experiencias compartidas.</small></span>
+        </a>
+        <a class="quick-access-card" href="/FamiliaAmigos">
+            <span class="quick-access-icon" aria-hidden="true">♧</span>
+            <span><strong>Familia y amigos</strong><small>Descubrí opciones para compartir.</small></span>
+        </a>
+    </div>
+</section>
+
+<section class="community-section" aria-labelledby="community-title">
+    <div class="community-heading">
+        <h2 id="community-title">Tu espacio en V.E.M.O.S.</h2>
+        <p>Guardá lugares, consultá experiencias y compartí información con otras personas.</p>
+    </div>
+
+    <div class="community-cards">
+        <article class="community-card">
+            <div class="community-icon" aria-hidden="true">▯</div>
+            <div class="community-card-content">
+                <h3>Tus lugares guardados</h3>
+                <p>Cuando marques un restaurante como favorito, vas a poder encontrarlo rápidamente desde acá.</p>
+                <a href="/Favoritos">Ver mis favoritos <span aria-hidden="true">→</span></a>
+            </div>
+        </article>
+
+        <article class="community-card">
+            <div class="community-icon" aria-hidden="true">♧</div>
+            <div class="community-card-content">
+                <h3>Compartí tu experiencia</h3>
+                <p>Leé reseñas de otros usuarios y ayudá a la comunidad compartiendo lo que encontraste.</p>
+                <a href="/Reseñas">Explorar reseñas <span aria-hidden="true">→</span></a>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="safety-notice" aria-labelledby="safety-title">
+    <div class="safety-icon" aria-hidden="true">♢</div>
+    <div>
+        <h2 id="safety-title">Antes de elegir, revisá la información</h2>
+        <p>Los filtros y las reseñas ayudan a buscar. Si tenés alergias o celiaquía, confirmá siempre los ingredientes y la preparación con el restaurante.</p>
+    </div>
+</section>
+

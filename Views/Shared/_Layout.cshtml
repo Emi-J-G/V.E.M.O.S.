@@ -26,16 +26,33 @@
             </a>
 
             <form class="search-form" action="/Buscar" method="get" role="search">
-                <input id="site-search" name="q" type="search" class="search-input" placeholder="Buscar..." aria-label="Buscar" />
-                <button type="submit" class="search-button" aria-label="Buscar">></button>
+                <span class="search-icon" aria-hidden="true"></span>
+                <input id="site-search" name="q" type="search" class="search-input" placeholder="Buscar restaurantes o platos" aria-label="Buscar restaurantes o platos" />
+                <button type="submit" class="search-button" aria-label="Buscar"></button>
             </form>
 
             @if (!string.IsNullOrWhiteSpace(usuario))
             {
-                <nav class="user-header-actions" aria-label="Perfil de usuario">
-                    <button type="button" class="header-option-button">Opciones</button>
+                <nav class="user-header-actions" aria-label="Navegación de usuario">
+                    <a href="/" class="header-nav-link header-home-link">
+                        <span class="header-nav-icon header-home-icon" aria-hidden="true"></span>
+                        <span>Inicio</span>
+                    </a>
+                    <a href="/Mapa" class="header-nav-link">
+                        <span class="header-nav-icon header-map-icon" aria-hidden="true"></span>
+                        <span>Mapa</span>
+                    </a>
+                    <a href="/Restaurantes" class="header-nav-link">
+                        <span class="header-nav-icon header-restaurant-icon" aria-hidden="true"></span>
+                        <span>Restaurantes</span>
+                    </a>
+                    <a href="/Favoritos" class="header-nav-link">
+                        <span class="header-nav-icon header-favorite-icon" aria-hidden="true"></span>
+                        <span>Favoritos</span>
+                    </a>
                     <button type="button" class="profile-button" aria-label="Perfil del usuario">
                         <span class="profile-avatar">@inicialUsuario</span>
+                        <span class="profile-chevron" aria-hidden="true"></span>
                     </button>
                 </nav>
             }
@@ -54,41 +71,66 @@
     </main>
 
     <footer class="site-footer">
-        <div class="footer-brand">
-            <img src="~/Images/Logotipo2.svg" alt="VEMOS" class="logo" />
+        <div class="footer-main">
+            <div class="footer-brand">
+                <img src="~/Images/Logotipo2.svg" alt="VEMOS" class="footer-logo" />
+                <p>Todos los lugares. Todos los<br />personas.</p>
+                <div class="footer-socials" aria-label="Redes sociales">
+                    <a href="#" aria-label="Instagram">◎</a>
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="X">X</a>
+                    <a href="#" aria-label="YouTube">▶</a>
+                </div>
+            </div>
+
+            <div class="footer-columns">
+                <div>
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="/Mapa">Mapa</a></li>
+                        <li><a href="/Home/QuienesSomos">Explorar quienes somos</a></li>
+                        <li><a href="/Contacto">Contactos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Restricciones</h4>
+                    <ul>
+                        <li><a href="#">Sin Gluten</a></li>
+                        <li><a href="#">Intolerancias</a></li>
+                        <li><a href="#">Alergias</a></li>
+                        <li><a href="#">Religiosos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Comunidad</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">TikTok</a></li>
+                        <li><a href="#">Mail</a></li>
+                        <li><a href="#">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <form class="footer-signup" action="#" method="post">
+                <h4>¡Móntate al día!</h4>
+                <p>Ingresa a apoyo y mejora tu experiencia en VEMOS.</p>
+                <label class="sr-only" for="footer-email">Tu correo electrónico</label>
+                <input id="footer-email" name="email" type="email" placeholder="✉  Tu correo electrónico" required />
+                <button type="submit">Suscribirse</button>
+            </form>
         </div>
 
-        <div class="footer-columns">
-            <div>
-                <h4>Navegación</h4>
-                <ul>
-                    <li>Inicio</li>
-                    <li>Restaurantes</li>
-                    <li>Mapa</li>
-                    <li>Contacto</li>
-                </ul>
-            </div>
-            <div>
-                <h4>Restricciones</h4>
-                <ul>
-                    <li>Nosotros</li>
-                    <li>FAQ</li>
-                    <li>Políticas</li>
-                    <li>Ayuda</li>
-                </ul>
-            </div>
-            <div>
-                <h4>Comunidad</h4>
-                <ul>
-                    <li>Instagram</li>
-                    <li>Tik Tok</li>
-                    <li>Mail</li>
-                    <li>Discord</li>
-                </ul>
-            </div>
+        <div class="footer-bottom">
+            <span>© 2025 VEMOS</span>
+            <span>Todos los derechos reservados</span>
+            <nav aria-label="Enlaces legales">
+                <a href="#">Accesibilidad</a>
+                <a href="#">Cookies</a>
+                <a href="#">Privacidad</a>
+            </nav>
         </div>
-
-        <div class="footer-copy">© 2026 VEMOS. Todos los derechos reservados.</div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
