@@ -23,6 +23,11 @@ public class HomeController : Controller
 
     public IActionResult Home()
     {
+        DB db = new DB();
+        List<Restriccion> filtrosActivos = new List<Restriccion>();
+        string usuario = HttpContext.Session.GetString("Usuario");
+        filtrosActivos = db.GetRestriccionesByUsuario(usuario);
+        ViewBag.filtrosActivos = filtrosActivos;
         return View();
     }    
 

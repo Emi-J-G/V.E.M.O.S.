@@ -20,9 +20,11 @@
         <div class="active-filters">
             <strong>Tus filtros activos <span aria-hidden="true">·</span> ejemplo</strong>
             <div class="filter-chips">
-                <span class="filter-chip"><span aria-hidden="true">✓</span> Sin TACC</span>
-                <span class="filter-chip"><span aria-hidden="true">✓</span> Sin lactosa</span>
-                <a class="edit-filters" href="/Home/Index"><span aria-hidden="true">☷</span> Editar filtros</a>
+                @foreach (Restriccion restriccion in @ViewBag.filtrosActivos)
+                {
+                    <span class="filter-chip"><span aria-hidden="true">✓</span> @restriccion.nombre</span>
+                }
+                <a class="edit-filters" href="#"><span aria-hidden="true">☷</span> Editar filtros</a>
             </div>
         </div>
 

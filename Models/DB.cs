@@ -6,6 +6,21 @@ public class DB
 {
     string _connectionString = @"Server=localhost;DataBase=VEMOSDB;Integrated Security=True;TrustServerCertificate=True;";
     
+    public List<Restriccion> GetRestriccionesByUsuario(string usuario)
+    {
+        string query = @"SELECT r.id, r.nombre, r.descripcion
+                         FROM Restricciones r
+                         INNER JOIN RestriccionesUsuarios ru ON r.id = ru.idRestriccion
+                         INNER JOIN Usuarios u ON ru.idUsuario = u.id
+                         WHERE u.username = @username";
+        List<Restriccion> restricciones = new List<Restriccion>();
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            restricciones = connection.Query<Restriccion>(query, new { username = usuario }).ToList();
+        }
+        return restricciones;
+    }
+
     private void InsertarRestricciones(SqlConnection connection, int idUsuario, IEnumerable<Restriccion> restricciones)
     {
         if (restricciones == null)
