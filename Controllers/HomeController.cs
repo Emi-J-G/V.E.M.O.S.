@@ -13,10 +13,11 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(string mensaje)
     {
         ViewBag.Usuario = HttpContext.Session.GetString("Usuario");
         ViewBag.NombreCompleto = HttpContext.Session.GetString("NombreCompleto");
+        ViewBag.Mensaje = mensaje;
         return View();
     }
 

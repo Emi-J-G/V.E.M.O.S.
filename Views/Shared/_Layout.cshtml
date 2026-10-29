@@ -30,11 +30,10 @@
                 <input id="site-search" name="q" type="search" class="search-input" placeholder="Buscar restaurantes o platos" aria-label="Buscar restaurantes o platos" />
                 <button type="submit" class="search-button" aria-label="Buscar"></button>
             </form>
-
             @if (!string.IsNullOrWhiteSpace(usuario))
             {
                 <nav class="user-header-actions" aria-label="Navegación de usuario">
-                    <a href="/" class="header-nav-link header-home-link">
+                    <a href="/Home/Home" class="header-nav-link header-home-link">
                         <span class="header-nav-icon header-home-icon" aria-hidden="true"></span>
                         <span>Inicio</span>
                     </a>
@@ -50,17 +49,28 @@
                         <span class="header-nav-icon header-favorite-icon" aria-hidden="true"></span>
                         <span>Favoritos</span>
                     </a>
-                    <button type="button" class="profile-button" aria-label="Perfil del usuario">
-                        <span class="profile-avatar">@inicialUsuario</span>
-                        <span class="profile-chevron" aria-hidden="true"></span>
-                    </button>
+                    <div class="profile-dropdown dropdown">
+                        <button type="button" class="profile-button profile-dropdown-toggle dropdown-toggle" id="profileMenuButton" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Abrir menú de perfil">
+                            <span class="profile-avatar">@inicialUsuario</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end profile-dropdown-menu" aria-labelledby="profileMenuButton">
+                            <li><a class="dropdown-item" href="/Home/Home">Mi inicio</a></li>
+                            <li><a class="dropdown-item" href="/Favoritos">Mis favoritos</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li>
+                                <form asp-controller="LoginRegis" asp-action="Logout" method="post" class="profile-logout-form">
+                                    <button type="submit" class="dropdown-item profile-logout-button">Cerrar sesión</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
                 </nav>
             }
             else
             {
                 <nav class="auth-links" aria-label="Autenticación">
-                    <a href="/LoginRegis/Registro">Registrarse</a>
-                    <a href="/LoginRegis/Login">Iniciar sesión</a>
+                    <button type="button" class="auth-popup-trigger" data-auth-modal="register-modal">Registrarse</button>
+                    <button type="button" class="auth-popup-trigger" data-auth-modal="login-modal">Iniciar sesión</button>
                 </nav>
             }
         </div>

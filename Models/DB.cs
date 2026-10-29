@@ -6,6 +6,35 @@ public class DB
 {
     string _connectionString = @"Server=localhost;DataBase=VEMOSDB;Integrated Security=True;TrustServerCertificate=True;";
     
+    private void InsertarRestricciones(SqlConnection connection, int idUsuario, IEnumerable<Restriccion> restricciones)
+    {
+        if (restricciones == null)
+            return;
+
+        foreach (var restriccion in restricciones
+            .Where(r => !string.IsNullOrWhiteSpace(r?.nombre))
+            .Select(r => new Restriccion { nombre = r.nombre.Trim() })
+            .GroupBy(r => r.nombre, StringComparer.OrdinalIgnoreCase)
+            .Select(g => g.First()))
+        {
+            connection.Execute(
+                @"IF NOT EXISTS (SELECT 1 FROM Restricciones WHERE nombre = @nombre)
+                  INSERT INTO Restricciones (nombre, descripcion) VALUES (@nombre, @nombre);",
+                new { nombre = restriccion.nombre });
+
+            connection.Execute(
+                @"INSERT INTO RestriccionesUsuarios (idRestriccion, idUsuario)
+                  SELECT r.id, @idUsuario
+                  FROM Restricciones r
+                  WHERE r.nombre = @nombre
+                    AND NOT EXISTS (
+                        SELECT 1 FROM RestriccionesUsuarios ru
+                        WHERE ru.idRestriccion = r.id AND ru.idUsuario = @idUsuario
+                    );",
+                new { idUsuario, nombre = restriccion.nombre });
+        }
+    }
+
     //agarra un objeto usuario y lo inserta en la base de datos, incluyendo sus restricciones.
     public void registrarUsuario(Usuario usuario) {
         string query = "exec insertUser @username, @nombre, @apellido, @email, @contrasena, @tipo";
@@ -15,14 +44,9 @@ public class DB
             //inserta user
             int nuevoId = connection.ExecuteScalar<int>(query, new { username = usuario.username, nombre = usuario.nombre, apellido = usuario.apellido, email = usuario.email, contrasena = usuario.contrasena, tipo = usuario.tipo });
             usuario.id = nuevoId;
-            //inserta restricciones
-            if (usuario.restricciones != null && usuario.restricciones.Any()) {
-                foreach (var restriccion in usuario.restricciones) {
-                    if (string.IsNullOrWhiteSpace(restriccion.nombre))
-                        continue;
-                    connection.Execute(rquery, new { idUsuario = usuario.id, nombre = restriccion.nombre.Trim() });
-                }
-            }
+
+            if (usuario.restricciones != null && usuario.restricciones.Any())
+                InsertarRestricciones(connection, usuario.id, usuario.restricciones);
         }
     }
 
@@ -49,7 +73,7 @@ public class DB
         string query = "exec getUsuarioByUsername @pusername";
         Usuario usuario = new Usuario();
         using (SqlConnection connection = new SqlConnection(_connectionString)) {
-            usuario = connection.QueryFirstOrDefault<Usuario>(query, new { pusername = username});
+            usuario = connection.QueryFirstOrDefault<Usuario>(query, new { pusername = username });
         }
         return usuario;
     }

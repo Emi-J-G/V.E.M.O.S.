@@ -73,11 +73,12 @@ public class LoginRegisController : Controller
     public IActionResult Loguear(string nombreUsuario, string contrasena) {
         if (string.IsNullOrWhiteSpace(nombreUsuario) || string.IsNullOrWhiteSpace(contrasena))
         {
-            return RedirectToAction("Login", "LoginRegis", new { mensaje = "Debe completar usuario y contraseña." });
+            return RedirectToAction("Index", "Home", new { mensaje = "Debe completar usuario y contraseña." });
         }
 
         DB db = new DB();
         Usuario usuario = db.nomUsuarioExiste(nombreUsuario);
+
         if (usuario != null)
         {
             usuario = db.validarUsuario(usuario.email, contrasena);
@@ -91,7 +92,7 @@ public class LoginRegisController : Controller
         }
         else {
             //usuario no encontrado o contraseña incorrecta
-            return RedirectToAction("Login", "LoginRegis", new { mensaje = "Usuario o contraseña incorrectos." });
+            return RedirectToAction("Index", "Home", new { mensaje = "Usuario o contraseña incorrectos." });
         }
     }
 

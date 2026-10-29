@@ -3,6 +3,105 @@
     ViewData["Title"] = "Inicio";
 }
 
+@if (!string.IsNullOrEmpty(ViewBag.Mensaje as string))
+{
+    <div class="auth-banner-message" role="alert">@ViewBag.Mensaje</div>
+}
+
+<div class="auth-modal-backdrop" id="login-modal" aria-hidden="true">
+    <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="login-title">
+        <div class="login-card auth-modal-card">
+            <button type="button" class="auth-modal-close" aria-label="Cerrar">×</button>
+
+            <h1 class="auth-title" id="login-title">Iniciar sesión</h1>
+
+            @if (!string.IsNullOrEmpty(ViewBag.Mensaje as string))
+            {
+                <p class="auth-message">@ViewBag.Mensaje</p>
+            }
+
+            <form class="login-form" action='@Url.Action("Loguear", "LoginRegis")' method="POST">
+                <input class="auth-input" type="text" name="nombreUsuario" placeholder="Nombre de usuario" required />
+                <input class="auth-input" type="password" name="contrasena" placeholder="Contraseña" required />
+                <button class="auth-submit" type="submit">Ingresar</button>
+            </form>
+
+            <div class="auth-divider">
+                <span>Otras opciones</span>
+            </div>
+
+            <div class="auth-alt-actions">
+                <button type="button" class="auth-link auth-switch-trigger" data-auth-modal="register-modal">Registrarse</button>
+                <button class="auth-google" type="button">Iniciar sesión con Google</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="auth-modal-backdrop" id="register-modal" aria-hidden="true">
+    <div class="auth-modal auth-modal-large" role="dialog" aria-modal="true" aria-labelledby="register-title">
+        <div class="login-card register-card auth-modal-card">
+            <button type="button" class="auth-modal-close" aria-label="Cerrar">×</button>
+            <h1 class="auth-title" id="register-title">Registrarse</h1>
+
+            @if (!string.IsNullOrEmpty(ViewBag.Mensaje as string))
+            {
+                <p class="auth-message">@ViewBag.Mensaje</p>
+            }
+
+            <form class="login-form register-form" action='@Url.Action("Home", "Home")' method="POST" onsubmit="return validateRegisterForm();">
+                <div class="register-layout">
+                    <div class="register-fields">
+                        <label class="sr-only" for="nombreUsuario">Nombre de usuario</label>
+                        <input class="auth-input" type="text" id="nombreUsuario" name="nombreUsuario" placeholder="Username" autocomplete="username" required />
+                        <label class="sr-only" for="nombre">Nombre</label>
+                        <input class="auth-input" type="text" id="nombre" name="nombre" placeholder="Nombre" autocomplete="given-name" required />
+                        <label class="sr-only" for="apellido">Apellido</label>
+                        <input class="auth-input" type="text" id="apellido" name="apellido" placeholder="Apellido" autocomplete="family-name" required />
+                        <label class="sr-only" for="contrasena">Contraseña</label>
+                        <input class="auth-input" type="password" id="contrasena" name="contrasena" placeholder="Contraseña" autocomplete="new-password" required />
+                        <label class="sr-only" for="email">Correo electrónico</label>
+                        <input class="auth-input" type="email" id="email" name="email" placeholder="Correo electrónico" autocomplete="email" required />
+
+                        <label class="sr-only" for="tipo">Tipo de cuenta</label>
+                        <select class="auth-select" id="tipo" name="tipo" aria-label="Tipo de cuenta">
+                            <option value="Cliente">Cliente</option>
+                            <option value="Restaurante">Restaurante</option>
+                        </select>
+
+                        <button class="auth-submit" type="submit">Registrarse</button>
+                    </div>
+
+                    <div class="register-restrictions-wrap">
+                        <fieldset class="restrictions-box">
+                            <legend>Restricciones alimenticias</legend>
+                            <div class="restrictions-grid">
+                                <label><input type="checkbox" name="restricciones" value="Celiaquía" /> <span>Celiaquía</span></label>
+                                <label><input type="checkbox" name="restricciones" value="Diabetes" /> <span>Diabetes</span></label>
+                                <label><input type="checkbox" name="restricciones" value="Kosher" /> <span>Kosher</span></label>
+                                <label><input type="checkbox" name="restricciones" value="Halal" /> <span>Halal</span></label>
+                                <label><input type="checkbox" name="restricciones" value="Lactosa" /> <span>Lactosa</span></label>
+                                <label><input type="checkbox" name="restricciones" value="Vegano" /> <span>Vegano</span></label>
+                                <label><input type="checkbox" name="restricciones" value="Vegetariano" /> <span>Vegetariano</span></label>
+                                <label><input type="checkbox" name="restricciones" value="Alergias" /> <span>Alergias</span></label>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </form>
+
+            <div class="auth-divider">
+                <span>Otras opciones</span>
+            </div>
+
+            <div class="auth-alt-actions">
+                <button class="auth-google" type="button"><span class="google-mark" aria-hidden="true">G</span>Continuar con Google</button>
+                <button type="button" class="auth-link auth-switch-trigger" data-auth-modal="login-modal">Iniciar sesión</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <section class="landing-hero">
     <div class="hero-copy">
         <div class="pill-badge">
@@ -34,10 +133,10 @@
         <div class="need-label">Explorá según tus necesidades:</div>
 
         <div class="restriction-list">
-            <label class="chip"><input type="checkbox" checked /> Sin TACC</label>
-            <label class="chip"><input type="checkbox" checked /> Sin lactosa</label>
-            <label class="chip"><input type="checkbox" checked /> Vegetariano</label>
-            <label class="chip"><input type="checkbox" checked /> Vegano</label>
+            <label class="chip"><p>Sin TACC</p></label>
+            <label class="chip"><p>Sin lactosa</p></label>
+            <label class="chip"><p>Vegetariano</p></label>
+            <label class="chip"><p>Vegano</p></label>
         </div>
     </div>
 

@@ -56,3 +56,86 @@ function validateRegisterForm() {
 
     return true;
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const modalLogin = document.getElementById('login-modal');
+    const modalRegister = document.getElementById('register-modal');
+    const loginTriggers = document.querySelectorAll('[data-auth-modal="login-modal"]');
+    const registerTriggers = document.querySelectorAll('[data-auth-modal="register-modal"]');
+    const closeButtons = document.querySelectorAll('.auth-modal-close');
+    const switchButtons = document.querySelectorAll('.auth-switch-trigger');
+
+    function closeModal(modal) {
+        if (!modal) return;
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+    }
+
+    function closeAllModals() {
+        closeModal(modalLogin);
+        closeModal(modalRegister);
+    }
+
+    function openModal(modal) {
+        if (!modal) return;
+        closeAllModals();
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        const firstInput = modal.querySelector('input:not([type="hidden"]), select');
+        if (firstInput) {
+            setTimeout(() => firstInput.focus(), 40);
+        }
+    }
+
+    loginTriggers.forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
+            openModal(modalLogin);
+        });
+    });
+
+    registerTriggers.forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
+            openModal(modalRegister);
+        });
+    });
+
+    closeButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            const modal = button.closest('.auth-modal-backdrop');
+            closeModal(modal);
+        });
+    });
+
+    switchButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            const target = button.getAttribute('data-auth-modal');
+            if (target === 'login-modal') {
+                openModal(modalLogin);
+            }
+            if (target === 'register-modal') {
+                openModal(modalRegister);
+            }
+        });
+    });
+
+    [modalLogin, modalRegister].forEach(function (modal) {
+        if (!modal) return;
+
+        modal.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                closeModal(modal);
+            }
+        });
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            closeAllModals();
+        }
+    });
+
+    const hasMessage = document.querySelector('.auth-banner-message');
+    if (hasMessage) {
+        openModal(modalLogin);
+    }
+});
