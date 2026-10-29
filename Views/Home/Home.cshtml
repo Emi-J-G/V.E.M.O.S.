@@ -1,6 +1,28 @@
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Inicio";
+
+    var filtrosActivos = ViewBag.filtrosActivos as IEnumerable<Restriccion> ?? new List<Restriccion>();
+    var todasRestricciones = new[]
+    {
+        "Celiaquía",
+        "Diabetes",
+        "Kosher",
+        "Halal",
+        "Lactosa",
+        "Vegano",
+        "Vegetariano",
+        "Alergias"
+    };
+
+    var filtrosActivosNombres = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+    foreach (var filtro in filtrosActivos)
+    {
+        if (!string.IsNullOrWhiteSpace(filtro.nombre))
+        {
+            filtrosActivosNombres.Add(filtro.nombre.Trim());
+        }
+    }
 }
 
 <section class="signed-home-hero" aria-labelledby="signed-home-title">
@@ -20,15 +42,37 @@
         <div class="active-filters">
             <strong>Tus filtros activos <span aria-hidden="true">·</span> ejemplo</strong>
             <div class="filter-chips">
-                @foreach (Restriccion restriccion in @ViewBag.filtrosActivos)
+                @foreach (Restriccion restriccion in filtrosActivos)
                 {
                     <span class="filter-chip"><span aria-hidden="true">✓</span> @restriccion.nombre</span>
                 }
-                @if (ViewBag.filtrosActivos.Count == 0)
+                @if (filtrosActivos.Count() == 0)
                 {
                     <span class="filter-chip"><span aria-hidden="true">✓</span> Sin filtros activos</span>
                 }
-                <a class="edit-filters" href="#"><span aria-hidden="true">☷</span> Editar filtros</a>
+                <button type="button" class="edit-filters" id="edit-filters-button" aria-expanded="false" aria-controls="filter-editor-panel">
+                    <span aria-hidden="true">☷</span> Editar filtros
+                </button>
+            </div>
+
+            <div class="filter-editor-panel" id="filter-editor-panel" aria-hidden="true" hidden>
+                <div class="filter-editor-header">
+                    <strong>Filtros</strong>
+                </div>
+
+                <div class="filter-editor-grid">
+                    @foreach (var filtro in todasRestricciones)
+                    {
+                        var seleccionado = filtrosActivosNombres.Contains(filtro);
+                        <button type="button"
+                                class="filter-editor-option @(seleccionado ? "is-selected" : "")"
+                                data-filter-name="@filtro"
+                                aria-pressed="@(seleccionado ? "true" : "false")">
+                            <span class="filter-editor-check" aria-hidden="true">@(seleccionado ? "✓" : "+")</span>
+                            <span>@filtro</span>
+                        </button>
+                    }
+                </div>
             </div>
         </div>
 
