@@ -34,18 +34,16 @@ public class DB
 
     //devuelve un usuario si existe en la base de datos, sino devuelve null.
     public Usuario validarUsuario(string email, string contraseña) {
+        string query = "SELECT * FROM Usuarios WHERE email = @pemail AND contrasena = @pcontrasena";
+        string rquery = @"SELECT r.id, r.nombre, r.descripcion FROM RestriccionesUsuarios ru
+                                JOIN Restricciones r ON ru.idRestriccion = r.id WHERE ru.idUsuario = @pidUsuario";
         using (SqlConnection connection = new SqlConnection(_connectionString)) {
             connection.Open();//mantiene la bd abierta mientras se ejecuta el using, es mas eficiente bajo varios inserts.
-
             //busca el usuario
-            string query = "SELECT * FROM Usuarios WHERE email = @pemail AND contrasena = @pcontrasena";
             Usuario usuario = connection.QueryFirstOrDefault<Usuario>(query, new { pemail = email, pcontrasena = contraseña });
             if (usuario == null)
                 return null;
-
             //busca las restricciones del usuario
-            string rquery = @"SELECT r.id, r.nombre, r.descripcion FROM RestriccionesUsuarios ru
-                                JOIN Restricciones r ON ru.idRestriccion = r.id WHERE ru.idUsuario = @pidUsuario";
             List<Restriccion> restricciones = connection.Query<Restriccion>(rquery, new { pidUsuario = usuario.id }).ToList();
             usuario.restricciones = restricciones;
 
@@ -55,15 +53,15 @@ public class DB
 
     //trae un usuario si su user existe
     public Usuario nomUsuarioExiste(string username) {
+        string query = "SELECT * FROM Usuarios WHERE username = @pusername";
         using (SqlConnection connection = new SqlConnection(_connectionString)) {
-            string query = "SELECT * FROM Usuarios WHERE username = @pusername";
             Usuario usuario = connection.QueryFirstOrDefault<Usuario>(query, new { pusername = username});
             return usuario;
         }
     }
     public Usuario emUsuarioExiste(string email) {
+        string query = "SELECT * FROM Usuarios WHERE email = @pemail";
         using (SqlConnection connection = new SqlConnection(_connectionString)) {
-            string query = "SELECT * FROM Usuarios WHERE email = @pemail";
             Usuario usuario = connection.QueryFirstOrDefault<Usuario>(query, new { pemail = email});
             return usuario;
         }
