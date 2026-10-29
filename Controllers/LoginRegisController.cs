@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Security.Claims;
+using System.Text.Json;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
@@ -15,6 +16,13 @@ public class LoginRegisController : Controller
     public LoginRegisController(ILogger<LoginRegisController> logger)
     {
         _logger = logger;
+    }
+
+    private void GuardarUsuarioEnSesion(Usuario usuario)
+    {
+        HttpContext.Session.SetString("Usuario", usuario.username);
+        HttpContext.Session.SetString("NombreCompleto", usuario.nombre ?? string.Empty);
+        HttpContext.Session.SetString("UsuarioActual", JsonSerializer.Serialize(usuario));
     }
 
     [HttpGet("/LoginRegis/GoogleLogin")]
@@ -41,9 +49,17 @@ public class LoginRegisController : Controller
             ?? claims.FirstOrDefault(c => c.Type == "name")?.Value
             ?? email ?? "Usuario Google";
 
-        HttpContext.Session.SetString("Usuario", email ?? name);
-        HttpContext.Session.SetString("NombreCompleto", name);
+        var usuarioGoogle = new Usuario
+        {
+            username = email ?? name,
+            nombre = name,
+            email = email
+        };
+
+        HttpContext.Session.SetString("Usuario", usuarioGoogle.username);
+        HttpContext.Session.SetString("NombreCompleto", usuarioGoogle.nombre ?? string.Empty);
         HttpContext.Session.SetString("AuthProvider", "Google");
+        HttpContext.Session.SetString("UsuarioActual", JsonSerializer.Serialize(usuarioGoogle));
 
         return RedirectToAction("Home", "Home");
     }
@@ -75,6 +91,7 @@ public class LoginRegisController : Controller
             tipo = tipo,
             restricciones = restriccionesUsuario
         };
+
         DB db = new DB();
         if (db.nomUsuarioExiste(nombreUsuario) != null) // en esta instancia, se valida que el nombre de usuario no esté siendo usado
         {
@@ -90,9 +107,8 @@ public class LoginRegisController : Controller
         {
             db.registrarUsuario(usuario);
         }
-        // se establece la presencia del usuario en la web mediante sessions
-        HttpContext.Session.SetString("Usuario", nombreUsuario  );
-        HttpContext.Session.SetString("NombreCompleto", usuario.nombre);
+
+        GuardarUsuarioEnSesion(usuario);
         return RedirectToAction("Home", "Home");
     }
 
@@ -120,9 +136,7 @@ public class LoginRegisController : Controller
         }
 
         if (usuario != null) {
-            //usuario logueado correctamente
-            HttpContext.Session.SetString("Usuario", nombreUsuario);
-            HttpContext.Session.SetString("NombreCompleto", usuario.nombre);
+            GuardarUsuarioEnSesion(usuario);
             return RedirectToAction("Home", "Home");
         }
         else {
