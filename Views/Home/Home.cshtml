@@ -24,6 +24,10 @@
                 {
                     <span class="filter-chip"><span aria-hidden="true">✓</span> @restriccion.nombre</span>
                 }
+                @if (ViewBag.filtrosActivos.Count == 0)
+                {
+                    <span class="filter-chip"><span aria-hidden="true">✓</span> Sin filtros activos</span>
+                }
                 <a class="edit-filters" href="#"><span aria-hidden="true">☷</span> Editar filtros</a>
             </div>
         </div>
