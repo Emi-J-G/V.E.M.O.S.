@@ -91,7 +91,7 @@ public class LoginRegisController : Controller
             db.registrarUsuario(usuario);
         }
         // se establece la presencia del usuario en la web mediante sessions
-        HttpContext.Session.SetString("Usuario", usuario.username);
+        HttpContext.Session.SetString("Usuario", nombreUsuario  );
         HttpContext.Session.SetString("NombreCompleto", usuario.nombre);
         return RedirectToAction("Home", "Home");
     }
