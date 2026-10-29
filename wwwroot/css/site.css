@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400,500,700,800&display=swap');
 
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   margin: 0;
   min-height: 100%;
@@ -2155,6 +2159,7 @@ button, input {
 .auth-alt-actions {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   padding: 12px 16px 16px;
   background: rgba(255, 247, 204, 0.08);
@@ -2558,3 +2563,29 @@ button, input {
     font-size: 0.55rem;
     font-weight: 700;
   }
+
+.header-section-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 16px;
+}
+
+.header-section-link {
+  border: 0;
+  background: transparent;
+  color: #087f70;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.header-section-link:hover,
+.header-section-link:focus-visible {
+  background: #e4f3ef;
+  color: #078f7d;
+  outline: none;
+}

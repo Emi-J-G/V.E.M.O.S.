@@ -102,7 +102,7 @@
     </div>
 </div>
 
-<section class="landing-hero">
+<section class="landing-hero" id="inicio">
     <div class="hero-copy">
         <div class="pill-badge">
             <span class="pill-icon">♡</span>
@@ -190,7 +190,7 @@
     </article>
 </section>
 
-<section class="discover-section" aria-label="Descubrir lugares para comer">
+<section class="discover-section" id="descubri" aria-label="Descubrir lugares para comer">
     <div class="discover-intro">
         <h1>Descubrí dónde comer</h1>
         <p>Explorá los lugares disponibles y elegí los filtros que necesites.</p>
@@ -247,7 +247,7 @@
     </div>
 </section>
 
-<section class="how-section" aria-label="Cómo funciona V.E.M.O.S.">
+<section class="how-section" id="como-funciona" aria-label="Cómo funciona V.E.M.O.S.">
     <div class="how-header">
         <h2>¿Cómo funciona V.E.M.O.S.?</h2>
         <p>En tres pasos, encontrá opciones que se adapten a vos.</p>
@@ -291,3 +291,16 @@
         <span>V.E.M.O.S.</span>
     </div>
 </section>
+
+<script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>

@@ -151,6 +151,32 @@ document.addEventListener('DOMContentLoaded', function () {
         openModal(modalLogin);
     }
 
+    function bindSmoothAnchors() {
+        const anchors = document.querySelectorAll('a[href^="#"]');
+
+        anchors.forEach(function (anchor) {
+            anchor.addEventListener('click', function (event) {
+                const targetSelector = anchor.getAttribute('href');
+                if (!targetSelector || targetSelector === '#') {
+                    return;
+                }
+
+                const target = document.querySelector(targetSelector);
+                if (!target) {
+                    return;
+                }
+
+                event.preventDefault();
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    }
+
+    bindSmoothAnchors();
+
     const filterButton = document.getElementById('edit-filters-button');
     const filterPanel = document.getElementById('filter-editor-panel');
     const filterOptions = document.querySelectorAll('.filter-editor-option');
