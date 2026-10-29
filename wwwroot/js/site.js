@@ -60,8 +60,10 @@ function validateRegisterForm() {
 document.addEventListener('DOMContentLoaded', function () {
     const modalLogin = document.getElementById('login-modal');
     const modalRegister = document.getElementById('register-modal');
+    const modalReport = document.getElementById('report-modal');
     const loginTriggers = document.querySelectorAll('[data-auth-modal="login-modal"]');
     const registerTriggers = document.querySelectorAll('[data-auth-modal="register-modal"]');
+    const reportTriggers = document.querySelectorAll('[data-auth-modal="report-modal"]');
     const closeButtons = document.querySelectorAll('.auth-modal-close');
     const switchButtons = document.querySelectorAll('.auth-switch-trigger');
 
@@ -74,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function closeAllModals() {
         closeModal(modalLogin);
         closeModal(modalRegister);
+        closeModal(modalReport);
     }
 
     function openModal(modal) {
@@ -81,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         closeAllModals();
         modal.classList.add('is-open');
         modal.setAttribute('aria-hidden', 'false');
-        const firstInput = modal.querySelector('input:not([type="hidden"]), select');
+        const firstInput = modal.querySelector('input:not([type="hidden"]), select, textarea');
         if (firstInput) {
             setTimeout(() => firstInput.focus(), 40);
         }
@@ -96,6 +99,12 @@ document.addEventListener('DOMContentLoaded', function () {
     registerTriggers.forEach(function (trigger) {
         trigger.addEventListener('click', function () {
             openModal(modalRegister);
+        });
+    });
+
+    reportTriggers.forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
+            openModal(modalReport);
         });
     });
 
@@ -115,10 +124,13 @@ document.addEventListener('DOMContentLoaded', function () {
             if (target === 'register-modal') {
                 openModal(modalRegister);
             }
+            if (target === 'report-modal') {
+                openModal(modalReport);
+            }
         });
     });
 
-    [modalLogin, modalRegister].forEach(function (modal) {
+    [modalLogin, modalRegister, modalReport].forEach(function (modal) {
         if (!modal) return;
 
         modal.addEventListener('click', function (event) {

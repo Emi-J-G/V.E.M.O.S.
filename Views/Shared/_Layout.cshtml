@@ -54,10 +54,10 @@
                             <span class="profile-avatar">@inicialUsuario</span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end profile-dropdown-menu" aria-labelledby="profileMenuButton">
-                            <li><a class="dropdown-item" href="/Perfil">Mi perfil</a></li>
-                            <li><a class="dropdown-item" href="/Favoritos">Ajustes</a></li>
-                            <li><a class="dropdown-item" href="/Ayuda">Familia y Amigos</a></li>
-                            <li><a class="dropdown-item" href="/Ayuda">Reportar un problema</a></li>
+                            <li><a class="dropdown-item" href="/Options/Perfil">Mi perfil</a></li>
+                            <li><a class="dropdown-item" href="/Options/Ajustes">Ajustes</a></li>
+                            <li><a class="dropdown-item" href="/Options/Amigos">Familia y Amigos</a></li>
+                            <li><button type="button" class="dropdown-item auth-popup-trigger report-popup-trigger" data-auth-modal="report-modal">Reportar un problema</button></li>
                             <li><hr class="dropdown-divider" /></li>
                             <li>
                                 <form asp-controller="LoginRegis" asp-action="Logout" method="post" class="profile-logout-form">
@@ -77,6 +77,33 @@
             }
         </div>
     </header>
+
+    <div class="auth-modal-backdrop" id="report-modal" aria-hidden="true">
+        <div class="auth-modal auth-modal-medium" role="dialog" aria-modal="true" aria-labelledby="report-title">
+            <div class="login-card auth-modal-card report-card">
+                <button type="button" class="auth-modal-close" aria-label="Cerrar">×</button>
+
+                <h1 class="auth-title" id="report-title">Reportar un problema</h1>
+                <p class="auth-message">Contanos qué está fallando para que podamos revisarlo.</p>
+
+                <form class="login-form report-form" method="post" action="#" onsubmit="event.preventDefault();">
+                    <label class="sr-only" for="report-category">Tipo de problema</label>
+                    <select class="auth-select" id="report-category" name="tipoProblema" aria-label="Tipo de problema">
+                        <option value="">Tipo de problema</option>
+                        <option value="Error visual">Error visual</option>
+                        <option value="Bug funcional">Bug funcional</option>
+                        <option value="Contenido incorrecto">Contenido incorrecto</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+
+                    <label class="sr-only" for="report-description">Descripción</label>
+                    <textarea class="auth-input auth-textarea" id="report-description" name="descripcion" rows="5" placeholder="Describe el problema" required></textarea>
+
+                    <button class="auth-submit" type="submit">Enviar reporte</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <main role="main" class="page-main">
         @RenderBody()
