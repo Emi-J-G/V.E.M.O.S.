@@ -150,4 +150,84 @@ document.addEventListener('DOMContentLoaded', function () {
     if (hasMessage) {
         openModal(modalLogin);
     }
+
+    const filterButton = document.getElementById('edit-filters-button');
+    const filterPanel = document.getElementById('filter-editor-panel');
+    const filterOptions = document.querySelectorAll('.filter-editor-option');
+    const itemsContainer = document.querySelector('.filter-chips');
+
+    if (!filterButton || !filterPanel || !itemsContainer) {
+        return;
+    }
+
+    function closeFilterPanel() {
+        filterPanel.hidden = true;
+        filterPanel.setAttribute('aria-hidden', 'true');
+        filterButton.setAttribute('aria-expanded', 'false');
+    }
+
+    function openFilterPanel() {
+        filterPanel.hidden = false;
+        filterPanel.setAttribute('aria-hidden', 'false');
+        filterButton.setAttribute('aria-expanded', 'true');
+    }
+
+    function syncActiveFiltersDisplay() {
+        const activeFilters = Array.from(filterOptions)
+            .filter(option => option.classList.contains('is-selected'))
+            .map(option => option.dataset.filterName);
+
+        const chipNodes = Array.from(itemsContainer.querySelectorAll('.filter-chip'));
+        const noFiltersChip = Array.from(itemsContainer.querySelectorAll('.filter-chip-no-filters'));
+
+        chipNodes.forEach(node => node.remove());
+        noFiltersChip.forEach(node => node.remove());
+
+        if (activeFilters.length === 0) {
+            const emptyChip = document.createElement('span');
+            emptyChip.className = 'filter-chip filter-chip-no-filters';
+            emptyChip.innerHTML = '<span aria-hidden="true">✓</span> Sin filtros activos';
+            itemsContainer.insertBefore(emptyChip, filterButton);
+            return;
+        }
+
+        activeFilters.forEach(name => {
+            const chip = document.createElement('span');
+            chip.className = 'filter-chip';
+            chip.innerHTML = '<span aria-hidden="true">✓</span> ' + name;
+            itemsContainer.insertBefore(chip, filterButton);
+        });
+    }
+
+    filterButton.addEventListener('click', function () {
+        const isOpen = filterButton.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+            closeFilterPanel();
+        } else {
+            openFilterPanel();
+        }
+    });
+
+    filterOptions.forEach(function (option) {
+        option.addEventListener('click', function () {
+            const isSelected = option.classList.contains('is-selected');
+            option.classList.toggle('is-selected', !isSelected);
+            option.setAttribute('aria-pressed', String(!isSelected));
+
+            const check = option.querySelector('.filter-editor-check');
+            if (check) {
+                check.textContent = !isSelected ? '✓' : '+';
+            }
+
+            syncActiveFiltersDisplay();
+        });
+    });
+
+    syncActiveFiltersDisplay();
+    closeFilterPanel();
 });
+
+const registerScript = document.querySelector('script[src*="site.js"]');
+if (registerScript && !registerScript.dataset.filterScriptBound) {
+    registerScript.dataset.filterScriptBound = 'true';
+}
