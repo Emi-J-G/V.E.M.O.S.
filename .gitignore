@@ -45,3 +45,4 @@ Thumbs.db
 # Optional local secrets
 # appsettings.Development.json
 # appsettings.Local.json
+appsettings.json
