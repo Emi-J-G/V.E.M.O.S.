@@ -1,4 +1,8 @@
 using System.Diagnostics;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Mvc;
 using VEMOS.Models;
 
@@ -11,6 +15,37 @@ public class LoginRegisController : Controller
     public LoginRegisController(ILogger<LoginRegisController> logger)
     {
         _logger = logger;
+    }
+
+    [HttpGet("/LoginRegis/GoogleLogin")]
+    public IActionResult GoogleLogin(string returnUrl = "/")
+    {
+        var redirectUrl = Url.Action(nameof(GoogleResponse), "LoginRegis", null, Request.Scheme) ?? "/signin-google";
+        var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
+        return Challenge(properties, GoogleDefaults.AuthenticationScheme);
+    }
+
+    [HttpGet("/LoginRegis/GoogleResponse")]
+    public async Task<IActionResult> GoogleResponse()
+    {
+        var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        if (!result.Succeeded || result.Principal == null)
+        {
+            return RedirectToAction("Index", "Home", new { mensaje = "No se pudo iniciar sesión con Google." });
+        }
+
+        var claims = result.Principal.Claims;
+        var email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value
+            ?? claims.FirstOrDefault(c => c.Type == "email")?.Value;
+        var name = claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value
+            ?? claims.FirstOrDefault(c => c.Type == "name")?.Value
+            ?? email ?? "Usuario Google";
+
+        HttpContext.Session.SetString("Usuario", email ?? name);
+        HttpContext.Session.SetString("NombreCompleto", name);
+        HttpContext.Session.SetString("AuthProvider", "Google");
+
+        return RedirectToAction("Home", "Home");
     }
 
     //desde index manda a view de registro

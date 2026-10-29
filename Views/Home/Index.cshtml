@@ -32,7 +32,7 @@
 
             <div class="auth-alt-actions">
                 <button type="button" class="auth-link auth-switch-trigger" data-auth-modal="register-modal">Registrarse</button>
-                <button class="auth-google" type="button">Iniciar sesión con Google</button>
+                <a href="@Url.Action("GoogleLogin", "LoginRegis")" class="auth-google" type="button">Iniciar sesión con Google</a>
             </div>
         </div>
     </div>
@@ -95,7 +95,7 @@
             </div>
 
             <div class="auth-alt-actions">
-                <button class="auth-google" type="button"><span class="google-mark" aria-hidden="true">G</span>Continuar con Google</button>
+                <a href="@Url.Action("GoogleLogin", "LoginRegis")" class="auth-google" type="button"><span class="google-mark" aria-hidden="true">G</span>Continuar con Google</a>
                 <button type="button" class="auth-link auth-switch-trigger" data-auth-modal="login-modal">Iniciar sesión</button>
             </div>
         </div>
